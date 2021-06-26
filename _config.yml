@@ -121,10 +121,10 @@ theme: next
 
 # Deployment 部署部分的设置
 ## Docs: https://hexo.io/docs/deployment.html
-deploy:
-- type: git
-  repo: git@gitee.com:elesos/elesos.git
-  branch: gh-pages
-- type: git
-  repo: git@github.com:elesos/elesos.github.io.git
-  branch: master #username.github.io只能部署在master分支，不能部署在gh-pages和/docs目录
+#deploy:
+#- type: git
+#  repo: git@gitee.com:elesos/elesos.git
+#  branch: gh-pages
+#- type: git
+#  repo: git@github.com:elesos/elesos.github.io.git
+#  branch: master #username.github.io只能部署在master分支，不能部署在gh-pages和/docs目录
