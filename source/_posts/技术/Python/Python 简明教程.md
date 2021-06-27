@@ -1,10 +1,9 @@
 ---
-title: 简明教程
+title: Python 简明教程
 tags:
   - Python
 categories:
   - Python
-  - 教程
 date: 2021-06-27 18:01:58
 ---
 
