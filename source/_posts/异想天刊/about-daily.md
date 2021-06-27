@@ -6,7 +6,7 @@ categories:
   - 异想天刊
 date: 2021-06-26 22:32:37
 ---
-关于，阮一峰老师搞了一个周刊，https://www.ruanyifeng.com/blog/weekly/
+阮一峰老师搞了一个周刊，https://www.ruanyifeng.com/blog/weekly/
 
 我在想我是不是也来抄袭一下。
 
@@ -20,6 +20,6 @@ date: 2021-06-26 22:32:37
 
 暂时取名异想天刊吧。
 
-本刊开源（https://github.com/elesos/elesos.github.io），欢迎大家提交 issue 投稿或推荐排行榜文章，有价值的文章。
+本刊开源（https://github.com/elesos/elesos.github.io ），欢迎大家提交 issue 投稿或推荐排行榜文章，有价值的文章。
 
 如果你发现了什么好东西生怕别人知道，你可以尝试放在这里让大家都知道。
