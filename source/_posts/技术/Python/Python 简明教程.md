@@ -3,7 +3,8 @@ title: Python 简明教程
 tags:
   - Python
 categories:
-  - Python
+  - [Python]
+  - [教程]
 date: 2021-06-27 18:01:58
 ---
 
