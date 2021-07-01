@@ -52,6 +52,6 @@ os.environ['SSL_CERT_FILE']='/path/to/lib/python3.8/site-packages/pip/_vendor/ce
 或者用certifi.where() 代替上面的路径！！！
 ```
 
-# 参考
+## 参考
 
 https://stackoverflow.com/questions/10667960/python-requests-throwing-sslerror
