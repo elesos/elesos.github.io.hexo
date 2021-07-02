@@ -122,9 +122,9 @@ theme: next
 # Deployment 部署部分的设置
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-#- type: git
-#  repo: git@gitee.com:elesos/elesos.git
-#  branch: gh-pages
+- type: git
+  repo: git@gitee.com:elesos/elesos.git
+  branch: master
 - type: git
   repo: git@github.com:elesos/elesos.github.io.git
   #branch: master 
