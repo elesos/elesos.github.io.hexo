@@ -38,6 +38,27 @@ std::thread::join()  //wait for a thread
 
 
 
+Sleep 函数告诉操作系统 “在未来的多少毫秒内我不参与 CPU 竞争”。
+
+Thread.Sleep(0) 的作用是 “触发操作系统立刻重新进行一次 CPU 竞争”。竞争的结果也许是当前线程仍然获得 CPU 控制权，也许会换成别的线程获得 CPU 控制权。
+
+
+1秒(s) ＝1000毫秒(ms)
+
+1毫秒(ms)＝1000微秒 (us)
+
+1微秒(us)＝1000纳秒 (ns)
+
+1秒=10的9次方
+
+[https://zh.wikipedia.org/zh-hans/%E6%95%B0%E9%87%8F%E7%BA%A7_(%E6%97%B6%E9%97%B4)](https://zh.wikipedia.org/zh-hans/数量级_(时间))
+
+1ks千秒=10的3次方秒
+
+1Ms兆秒=10的6次方秒
+
+1吉秒Gs=10的9次方秒，约31.7年。
+
 
 
 ```
