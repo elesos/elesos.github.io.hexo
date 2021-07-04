@@ -1,4 +1,13 @@
-# Introduction
+---
+title: Introduction
+tags:
+  - gn
+categories:
+  - gn
+date: 2021-07-04 13:30:10
+---
+
+# 
 
 This page is about how to design a project that can build independently
 with GN but also be brought into the Chrome build.

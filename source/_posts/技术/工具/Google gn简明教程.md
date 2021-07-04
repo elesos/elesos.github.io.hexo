@@ -34,7 +34,7 @@ gn args --list out/Default
 
 ## 快速入门
 
-https://gn.googlesource.com/gn/+/main/docs/quick_start.md
+https://gn.googlesource.com/gn/+/main/docs/quick_start.md  备份
 
 先下载示例代码 
 

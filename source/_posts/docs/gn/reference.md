@@ -1,4 +1,12 @@
-# GN Reference
+---
+title: GN Reference
+tags:
+  - gn
+categories:
+  - gn
+date: 2021-07-04 13:30:10
+---
+
 
 *This page is automatically generated from* `gn help --markdown all`.
 

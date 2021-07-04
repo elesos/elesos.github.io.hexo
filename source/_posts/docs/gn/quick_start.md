@@ -1,6 +1,11 @@
-# GN Quick Start guide
-
-[TOC]
+---
+title: GN Quick Start guide
+tags:
+  - gn
+categories:
+  - gn
+date: 2021-07-04 13:30:10
+---
 
 ## Running GN
 

@@ -1,4 +1,11 @@
-# How GN handles cross-compiling
+---
+title: How GN handles cross-compiling
+tags:
+  - gn
+categories:
+  - gn
+date: 2021-07-04 13:30:10
+---
 
 ## As a GN user
 

@@ -1,6 +1,12 @@
-# GN Frequently Asked Questions
+---
+title: GN Frequently Asked Questions
+tags:
+  - gn
+categories:
+  - gn
+date: 2021-07-04 13:30:10
+---
 
-[TOC]
 
 ## Where is the GN documentation?
 

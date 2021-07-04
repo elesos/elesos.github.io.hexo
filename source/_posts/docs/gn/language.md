@@ -1,6 +1,12 @@
-# GN Language and Operation
+---
+title: GN Language and Operation
+tags:
+  - gn
+categories:
+  - gn
+date: 2021-07-04 13:30:10
+---
 
-[TOC]
 
 ## Introduction
 
