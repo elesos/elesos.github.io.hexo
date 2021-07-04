@@ -7,7 +7,7 @@ categories:
 date: 2021-07-03 11:10:12
 ---
 
-## 下载
+# 下载
 
 ```
 git clone https://webrtc.googlesource.com/src
@@ -15,7 +15,7 @@ git clone https://webrtc.googlesource.com/src
 
 API:  https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API
 
-## 参考
+# 参考
 
 https://webrtc.org/  官网
 
@@ -30,4 +30,14 @@ https://webrtc.github.io/samples/       我搭建的示例https://elesos.github.
 sdk\android\src\jni\audio_device与modules\audio_device\android 下面都有一个opensles_common.h
 
 sdk的函数在jni的namespace下。
+
+
+
+需要了解gn相关知识。参见我的gn笔记
+
+
+
+# 架构
+
+https://webrtc.github.io/webrtc-org/architecture/
 
