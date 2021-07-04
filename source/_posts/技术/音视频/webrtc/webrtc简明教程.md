@@ -23,3 +23,11 @@ https://webrtc.github.io/webrtc-org/   我搭建的文档站 https://elesos.gith
 
 https://webrtc.github.io/samples/       我搭建的示例https://elesos.github.io/sites/webrtc/samples/
 
+
+
+# 目录结构
+
+sdk\android\src\jni\audio_device与modules\audio_device\android 下面都有一个opensles_common.h
+
+sdk的函数在jni的namespace下。
+

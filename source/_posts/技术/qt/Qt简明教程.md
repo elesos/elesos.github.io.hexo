@@ -46,11 +46,7 @@ connect(spinNum, SIGNAL(valueChanged(int)), this, SIGNAL (refreshInfo(int));
 
 - 信号与槽的参数个数和类型需要一致
 
-## 示例
 
-https://doc.qt.io/qt-6/qtwidgets-tutorials-notepad-example.html
-
-创建一个Qt Widgets Application
 
 ## 其它
 
@@ -73,3 +69,12 @@ ui中选中比如一个 chkBoxUnder 组件，右键调出其快捷菜单。在�
 http://c.biancheng.net/view/1822.html
 
 https://www.cnblogs.com/schips/p/framework-cpp-qt-02-ui-layout-manage.html
+
+
+
+## 示例
+
+https://doc.qt.io/qt-6/qtwidgets-tutorials-notepad-example.html
+
+创建一个Qt Widgets Application
+
