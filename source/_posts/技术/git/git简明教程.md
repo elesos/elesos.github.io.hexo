@@ -151,6 +151,16 @@ git clean -nfd  删除 untracked files,d表示目录，-n 参数先看看会删�
 
 
 
+To restore all files in the current directory
+
+```
+$ git restore .  //可以先cd到对应目录再执行
+```
+
+运行上面命令：error: pathspec '.' did not match any file(s) known to git，可能是没有变化！
+
+
+
 ### 撤消对文件的修改状态
 
 ```
@@ -174,6 +184,8 @@ git checkout -- test.txt 用版本库里的版本替换工作区的版本，无�
 没有被添加到版本库就被删除的文件，是无法恢复的！
 
 ## 分支管理
+
+　git checkout -b develop master
 
 删除dev分支就是把dev指针给删掉
 
@@ -448,7 +460,7 @@ git merge origin/master
 git rebase origin/master
 ```
 
-- git pull的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。
+- git pull的作用是，**取回远程主机某个分支的更新，再与本地的指定分支合并**。
 
 ```
 git pull <远程主机名> <远程分支>:<本地分支>
@@ -485,7 +497,7 @@ git push <远程主机名> <本地分支>:<远程分支>
 
 push时如果该远程分支不存在，则会被新建。
 
-删除origin主机的master分支:
+**删除origin主机的master分支:**
 
 ```
 git push origin --delete master
@@ -503,7 +515,17 @@ git push -u origin master
 
 ```
 git push --all origin
+
 ```
+
+```bash
+
+git branch --set-upstream-to=origin/branch-name branch-name 
+```
+
+将`branch-name`分支追踪远程分支`origin/branch-name`
+
+
 
 ### remote
 
@@ -649,6 +671,21 @@ systemctl restart sshd
 ## Git for Windows乱码
 
 卸载重装即可。
+
+```
+git config --global core.quotepath false 
+git config --global gui.encoding utf-8
+git config --global i18n.commit.encoding utf-8 
+git config --global i18n.logoutputencoding utf-8 
+```
+
+
+
+
+
+
+
+
 
 ## LF will be replaced by CRLF
 
@@ -806,3 +843,12 @@ authorized_keys 600权限 rx- --- ---
 https://github.com/elesos/progit/blob/master/zh/04-git-server/01-chapter4.markdown 有GitWeb的介绍
 
 [https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA-Git](https://git-scm.com/book/zh/v2/服务器上的-Git-在服务器上搭建-Git)
+
+
+
+
+
+git log --author="liudan" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
+ added lines: 4994, removed lines: 2282, total lines: 2712
+
+这个指令可以查看仓库里面，自己改了多少代码行

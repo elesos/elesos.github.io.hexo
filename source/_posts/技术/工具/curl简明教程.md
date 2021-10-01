@@ -24,3 +24,14 @@ curl --location --request GET 'https://api.xxx.com/auth?feature_code=tts' \
 ## 参考
 
 https://www.ruanyifeng.com/blog/2019/09/curl-reference.html
+
+
+
+`-k`参数指定跳过 SSL 检测。--insecure
+
+> ```bash
+> $ curl -k https://www.example.com
+> ```
+
+上面命令不会检查服务器的 SSL 证书是否正确。
+

@@ -81,6 +81,18 @@ nmake /f Makefile.vc mode=dll ZLIB_PATH=D:\fvbl\3rdparty\libz\win SSL_PATH=D:\fv
 ./configure --prefix=xxx --with-ssl=xxx/OpenSSL--with-zlib=/xxx/zlib/ --disable-static
 ```
 
+
+
+如果需要debug版，将DEBUG=no改为DEBUG=yes。
+
+//#define USE_SOCKETPAIR 1  修改这个不让使用Curl_socketpair
+
+https://github.com/curl/curl-for-win
+
+
+
+
+
 ## 参考
 
 https://curl.haxx.se/docs/install.html

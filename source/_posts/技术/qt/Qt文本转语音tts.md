@@ -1,0 +1,18 @@
+---
+title: Qt文本转语音tts
+tags:
+  - Qt
+categories:
+  - 不好分类
+date: 2021-07-26 11:21:13
+---
+
+https://blog.csdn.net/qq_31073871/article/details/108848335
+
+https://www.cnblogs.com/lvdongjie/p/11743248.html
+
+
+
+在linux下，它是调用speech-dispatcher
+
+在win7上，qt调用的是微软讲述者(microsoft speech)，这个功能在原版win中是自带的，在ghost或者阉割版win中是没有的。

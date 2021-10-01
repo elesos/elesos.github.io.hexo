@@ -41,3 +41,30 @@ Open the file [YourApp].xcodeproj/xcuserdata/[YourUsername].xcuserdata/xcschemes
 The "SchemeUserState" dictionary has entries for each scheme. In my file at least, they seem to be in alphabetical order. However, there is an integer key "orderHint" that seems to control the order in the scheme dropdown.
 
 # 
+
+
+
+
+
+# 架构问题
+
+You should leave ARCHS at the default, which is ARCHS_STANDARD.
+
+
+
+
+
+查看变量的地址值和内存值
+
+![image-20210823152755224](C:\Users\ws\AppData\Roaming\Typora\typora-user-images\image-20210823152755224.png)
+
+在控制台里面输入x/16xb self  语法是x/nfu <addr>
+
+其中/n表示要显示的内存单元的个数，就是输出多长的内存。上面是输出了16个字节的内存
+
+x:按十六进制格式显示
+
+b:表示单字节
+
+或者右键View Memory of xxx
+

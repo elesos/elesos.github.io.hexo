@@ -358,3 +358,7 @@ s.score = 90
 如果不定义setter方法就是一个只读属性
 
 https://www.liaoxuefeng.com/wiki/1016959663602400/1017595944503424
+
+
+
+python 自带的 Tcl/Tk 界面库

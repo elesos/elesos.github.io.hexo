@@ -27,11 +27,17 @@ https://www.runoob.com/w3cnote/cpp-keyword-intro.html
 
 
 
+C++库 https://en.cppreference.com/w/cpp/links/libs
+
 
 
 范围for
 
 using代替typedef
+
+`using SI=Sales_item`
+
+
 
 用vector和迭代器代替数组和指针
 
@@ -56,6 +62,8 @@ explicit 构造函数用来防止隐式转换
 ```
 
 http://c.biancheng.net/view/400.html
+
+p792 匿名的命名空间替代static声明
 
 # 宏
 
@@ -112,6 +120,10 @@ interval = 29LL * 24 * 3600 * 1000;
 取模运算符“%”的作用是求两个数相除的余数。
 
 通常用来判断一个数是否能被另一个数整除。
+
+
+
+向上取整 ceil
 
 # 文件读写
 
@@ -235,3 +247,497 @@ notify_all
 Remove value from range
 
 https://www.cplusplus.com/reference/algorithm/remove/
+
+
+
+# 新特性
+
+c++11开始，可以将大型的对象直接返回，不必担心拷贝代价
+
+
+
+# 智能指针
+
+auto_ptr, shared_ptr, weak_ptr, unique_ptr 其中后三个是c++11支持，第一个已经被11弃用。
+
+智能指针的作用是管理一个指针，因为存在以下这种情况：申请的空间在函数结束时忘记释放，造成内存泄漏。使用智能指针可以很大程度上避免这个问题， 因为智能指针就是一个类，当超出了类的作用域时，类会自动调用析构函数，析构函数会自动释放资源。 所以智能指针的作用就是在函数结束时自动释放内存空间，不需要手动释放内存空间。
+
+## auto_ptr
+
+c++98的方案，cpp11已经抛弃
+
+采用所有权模式。
+
+```
+auto_ptr< string> p1 (new string ("hello world”));
+auto_ptr<string>  p2;
+p2 = p1; //auto_ptr不会报错.
+```
+
+此时不会报错，p2剥夺了p1的所有权，但是当程序运行时访问p1将会报错。所以auto_ptr的缺点是：存在潜在的内存崩溃问题！
+
+## unique_ptr
+
+unique_ptr（替换auto_ptr）
+
+unique_ptr实现独占式拥有或严格拥有概念，保证同一时间内只有一个智能指针可以指向该对象。它对于避免资源泄露 (例如“以new创建对象后因为发生异常而忘记调用delete”)特别有用。
+
+采用所有权模式，还是上面那个例子
+
+```
+unique_ptr<string> p3 (new string ("auto"));   //#4
+unique_ptr<string> p4；                       //#5
+p4 = p3;//此时会报错！！
+```
+
+编译器认为p4=p3非法，避免了p3不再指向有效数据的问题。因此，unique_ptr比auto_ptr更安全。
+
+另外unique_ptr还有更聪明的地方：当程序试图将一个 unique_ptr 赋值给另一个时，如果源 unique_ptr 是个临时右值，编译器允许这么做； 如果源 unique_ptr 将存在一段时间，编译器将禁止这么做，比如：
+
+```
+unique_ptr<string> pu1(new string ("hello world"));
+unique_ptr<string> pu2;
+pu2 = pu1;                                      // #1 not allowed
+unique_ptr<string> pu3;
+pu3 = unique_ptr<string>(new string ("You"));   // #2 allowed
+```
+
+其中#1留下悬挂的unique_ptr(pu1)，可能导致危害。而#2不会留下悬挂的unique_ptr，因为它调用 unique_ptr 的构造函数， 该构造函数创建的临时对象在其所有权让给 pu3 后就会被销毁。
+
+注：如果确实想执行类似与#1的操作，要安全的重用这种指针，可给它赋新值。C++有一个标准库函数std::move()，让你能够将一个unique_ptr赋给另一个。例如：
+
+```
+unique_ptr<string> ps1, ps2;
+ps1 = demo("hello");
+ps2 = move(ps1);  //#3
+ps1 = demo("elesos");
+cout << *ps2 << *ps1 << endl;
+```
+
+## shared_ptr
+
+shared_ptr实现共享式拥有。多个智能指针可以指向相同对象，该对象和其相关资源会在“最后一个引用被销毁”时释放。 从名字share就可以看出资源可以被多个指针共享，它使用计数机制来表明资源被几个指针共享。 可以通过成员函数use_count()来查看资源的所有者个数。除了可以通过new来构造，还可以通过传入auto_ptr, unique_ptr,weak_ptr来构造。 当我们调用release()时，当前指针会释放资源所有权，计数减一。当计数等于0时，资源会被释放。
+
+shared_ptr 是为了解决 auto_ptr 在对象所有权上的局限性(auto_ptr 是独占的), 在使用引用计数的机制上提供了可以共享所有权的智能指针。
+
+成员函数：
+
+```
+use_count 返回引用计数的个数
+unique 返回是否是独占所有权( use_count 为 1)
+swap 交换两个 shared_ptr 对象(即交换所拥有的对象)
+reset 放弃内部原对象的所有权, 会引起原有对象的引用计数减少  https://www.cplusplus.com/reference/memory/shared_ptr/reset/
+
+  std::shared_ptr<int> sp;  // empty
+  sp.reset (new int);       // takes ownership of pointer
+  *sp=10;
+  std::cout << *sp << '\n';//10
+
+  sp.reset (new int);       // deletes managed object, acquires new pointer
+  *sp=20;
+  std::cout << *sp << '\n';  //20
+
+  sp.reset();               // deletes managed object
+
+
+get 返回内部对象(指针), 由于已经重载了()方法, 因此和直接使用对象是一样的.如 shared_ptr<int> sp(new int(1)); sp 与 sp.get()是等价的  ，Returns the stored pointer.   https://www.cplusplus.com/reference/memory/shared_ptr/get/
+
+int* p = new int (10);
+ std::shared_ptr<int> a (p);
+ if (a.get()==p)
+   std::cout << "a and p point to the same location\n";
+ // three ways of accessing the same address:
+ std::cout << *a.get() << "\n";  //不是a.get()! a.get()==p
+ std::cout << *a << "\n";
+ std::cout << *p << "\n";
+```
+
+## weak_ptr
+
+weak_ptr是一种不控制对象生命周期的智能指针, 它指向一个 shared_ptr 管理的对象. 进行该对象内存管理的是那个强引用的 shared_ptr. weak_ptr只是提供了对管理对象的一个访问手段。weak_ptr 设计的目的是为了配合 shared_ptr 而引入的，用来协助 shared_ptr 工作, 它只可以从一个 shared_ptr 或另一个 weak_ptr 对象构造,
+
+它的构造和析构不会引起引用记数的增加或减少。
+
+weak_ptr是用来解决shared_ptr相互引用时的死锁问题,如果两个shared_ptr相互引用,那么这两个指针的引用计数永远不可能为0,资源永远不会释放。
+
+weak_ptr是对对象的一种弱引用，不会增加对象的引用计数，和shared_ptr之间可以相互转化，shared_ptr可以直接赋值给它，
+
+它可以通过调用lock函数来获得shared_ptr。
+
+```
+class B;
+class A{
+	public:
+	shared_ptr<B> pb_;
+	~A(){
+		cout<<"A delete\n";
+	}
+};
+
+class B{
+    public:
+	shared_ptr<A> pa_;
+	~B(){
+		cout<<"B delete\n";
+	}
+};
+
+void fun(){
+	shared_ptr<B> pb(new B());
+	shared_ptr<A> pa(new A());
+	pb->pa_ = pa;
+	pa->pb_ = pb;
+	cout<<pb.use_count()<<endl;
+	cout<<pa.use_count()<<endl;
+}
+
+int main(){
+	fun();
+	return 0;
+}
+```
+
+可以看到fun函数中pa ，pb之间互相引用，两个资源的引用计数为2，当跳出函数时，智能指针pa，pb析构时两个资源的引用计数会减一， 但是两者引用计数还是为1，导致跳出函数时资源没有被释放（A B的析构函数没有被调用），如果把其中一个改为weak_ptr就可以了， 我们把类A里面的shared_ptr pb_; 改为weak_ptr pb_; 这样的话，资源B的引用开始就只有1，当pb析构时，B的计数变为0，B得到释放，B释放的同时也会使A的计数减一，同时pa析构时使A的计数减一，那么A的计数为0，A得到释放。
+
+注意我们不能通过weak_ptr直接访问对象的方法，比如B对象中有一个方法print(),我们不能这样访问，pa->pb_->print(); pb_是一个weak_ptr，应该先把它转化为shared_ptr,如：
+
+```
+shared_ptr p = pa->pb_.lock(); 
+p->print();
+```
+
+
+
+# 线程thread
+
+
+
+```
+std::thread thread_obj(func, params);
+
+std::thread::join()  //wait for a thread 
+
+
+ std::thread t1(callable);   // Start thread t1   
+ t1.join(); // Wait for t1 to finish
+ 
+ if(joinable()){
+
+}
+
+线程是可结合joinable或者可分离detached的。
+一个可结合线程是可以被其它线程回收资源和杀死结束的，
+而对于detached状态的线程，其资源不能被其它线程回收和杀死，只能等待线程结束才能由系统自动释放。
+
+只有处于活动状态线程才能调用join，可以通过joinable()函数检查;
+join 会使当前线程阻塞，直到目标线程执行完毕
+join只能被调用一次，之后joinable就会变为false，表示线程执行完毕；
+
+以下情况不可结合 检查线程是否可被join
+1,默认构造的
+2，已调用过join或detach
+https://vimsky.com/zh-tw/examples/usage/thread-joinable-function-in-c.html
+
+
+
+终止线程，需要先设置一个循环退出变量，然后检查是否joinable,然后用join等待退出
+```
+
+
+
+## sleep
+
+
+
+```
+  std::this_thread::sleep_for(std::chrono::seconds(1));
+ std::this_thread::sleep_for(std::chrono::milliseconds(interval));
+ 
+ #include <chrono>
+ auto start = std::chrono::high_resolution_clock::now(); //
+   std::this_thread::sleep_for(2000ms);  //Blocks the execution of the current thread
+   auto end = std::chrono::high_resolution_clock::now();
+   std::chrono::duration<double, std::milli> elapsed = end-start;
+   std::cout << "Waited " << elapsed.count() << " ms\n";   //Waited 2000.12 ms
+```
+
+
+
+Sleep 函数告诉操作系统 “在未来的多少毫秒内我不参与 CPU 竞争”。
+
+Thread.Sleep(0) 的作用是 “触发操作系统立刻重新进行一次 CPU 竞争”。竞争的结果也许是当前线程仍然获得 CPU 控制权，也许会换成别的线程获得 CPU 控制权。
+
+
+1秒(s) ＝1000毫秒(ms)
+
+1毫秒(ms)＝1000微秒 (us)
+
+1微秒(us)＝1000纳秒 (ns)
+
+1秒=10的9次方
+
+[https://zh.wikipedia.org/zh-hans/%E6%95%B0%E9%87%8F%E7%BA%A7_(%E6%97%B6%E9%97%B4)](https://zh.wikipedia.org/zh-hans/数量级_(时间))
+
+1ks千秒=10的3次方秒
+
+1Ms兆秒=10的6次方秒
+
+1吉秒Gs=10的9次方秒，约31.7年。
+
+
+
+```
+离开作用域就释放mutex了
+std::lock_guard<std::mutex> lock(io_mutex); //lock_guard是一个类，是mutex的包装 https://en.cppreference.com/w/cpp/thread/lock_guard
+std::unique_lock<std::mutex> locker(mutex_); 
+```
+
+https://www.cplusplus.com/reference/mutex/unique_lock/
+
+A `lock_guard` always holds a lock from its construction to its destruction. A `unique_lock` can be created without immediately locking, can unlock at any point in its existence, and can transfer ownership of the lock from one instance to another.
+
+## detach
+
+使用join(),线程运行完,main函数才能结束。
+
+当使用detach()函数时，主调线程继续运行，被调线程驻留后台运行，主调线程无法再取得该被调线程的控制权。当主调线程结束时，由运行时库负责清理与被调线程相关的资源。使用detach(),main函数不用等待线程结束才能结束。有时候线程还没运行完，main函数就已经结束了。
+
+## 参考
+
+https://en.cppreference.com/w/cpp/thread/thread/detach
+
+https://en.cppreference.com/w/cpp/thread/thread/joinable
+
+https://www.cplusplus.com/reference/thread/thread/detach/
+
+https://www.geeksforgeeks.org/multithreading-in-cpp/
+
+
+
+# 常用数据结构
+
+## list
+
+```
+ std::list<int> first;                                // empty list of ints
+ std::list<int> second (4,100);                       // four ints with value 100
+ std::list<int> third (second.begin(),second.end());  // iterating through second
+ std::list<int> fourth (third);                       // a copy of third
+ 
+ 
+mylist.push_back(77);
+
+mylist.front()
+
+ std::list< std::pair<int,char> > mylist;
+ mylist.emplace_front(10,'a');
+ 
+ mylist.emplace_back(10,'a');
+ mylist.emplace_back(20,'b');
+ 
+ first.assign (7,100);                      // 7 ints with value 100
+ second.assign (first.begin(),first.end()); // a copy of first
+ 
+ 
+ std::list< std::pair<int,char> > mylist;
+ mylist.emplace ( mylist.begin(), 100, 'x' );
+ 
+erase  根据位置删除
+remove 根据值删除
+double mydoubles[]={ 12.15,  2.72, 73.0,  12.77,  3.14,  12.77, 73.35, 72.25, 15.3,  72.25 };
+std::list<double> mylist (mydoubles,mydoubles+10);
+```
+
+https://www.cplusplus.com/reference/list/list/
+
+## vector
+
+```
+c.clear()                   移除容器中所有数据。
+c.empty()                 判断容器是否为空。
+c.erase(pos)             删除pos位置的数据
+c.erase(beg,end)       删除[beg,end)区间的数据
+c.front()                  传回第一个数据。
+c.insert(pos,elem)      在pos位置插入一个elem拷贝
+c.pop_back()            删除最后一个数据。
+c.push_back(elem)     在尾部加入一个数据。
+emplace_back
+c.resize(num)            重新设置该容器的大小
+c.size()                    返回容器中实际数据的个数。
+c.begin()                  返回指向容器第一个元素的迭代器
+c.end()                    返回指向容器最后一个元素的迭代器
+```
+
+## map
+
+### pair
+
+
+
+```
+#include <utility>      // std::pair, std::make_pair
+
+pair <string,double> product1;                     // default constructor
+pair <string,double> product2 ("tomatoes",2.30);   // value init
+pair <string,double> product3 (product2);          // copy constructor
+
+product1 = make_pair(string("lightbulbs"), 0.99);   // using make_pair (move)
+g2 = make_pair(1, 'a');
+
+product2.first = "shoes";                //赋值
+product2.second = 39.90;        
+```
+
+https://www.cplusplus.com/reference/utility/pair/pair/
+
+https://www.geeksforgeeks.org/pair-in-cpp-stl/
+
+### map
+
+map are slower than unordered_map containers to access individual elements by their key, but they allow the direct iteration迭代 on subsets based on their order.
+
+#### 特性
+
+元素排了序
+
+#### 操作
+
+```
+mymap.insert ( pair<char,int>('a',100) );  //map_name.insert({key, element})
+mymap.insert (it, pair<char,int>('b',300));
+anothermap.insert(mymap.begin(),mymap.find('c'));  
+
+map<char,int> mymap;
+mymap.emplace('x',100);  //map_name.emplace(key, element)
+for (auto &x: mymap)
+   cout << " [" << x.first << ':' << x.second << ']';
+   
+   
+ find
+ 
+ 删除
+ mymap.erase (it);  
+ mymap.erase ('c');                  // erasing by key
+ mymap.erase ( it, mymap.end() );    // erasing by range
+
+clear
+count(key) //Count elements with a specific key
+
+
+ 
+```
+
+#### 对比
+
+all containers (vector, stack, queue, set, map, etc) support both insert and emplace operations.
+
+emplace不copy of object.
+
+```
+ms.insert(make_pair('b', 25)); 
+```
+
+https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/
+
+https://www.cplusplus.com/reference/map/map/
+
+
+
+## 类
+
+protected成员：对于子女、朋友来说，就是public的，可以自由使用，没有任何限制，而对于其他的外部class，protected就变成private。
+
+
+
+## Lambda
+
+方便定义匿名函数
+
+```
+[capture list] (params list) mutable exception-> return type { function body }
+[capture list] (params list) -> return type {function body}
+[capture list] (params list) {function body}
+[capture list] {function body}
+```
+
+capture list：捕获外部变量列表 , &, a, b除a和b按值进行传递外，其他参数都按引用进行传递。 a, &b 将a按值进行传递，b按引用进行传递。 =，&a, &b 除a和b按引用进行传递外，其他参数都按值进行传递。
+
+params list：形参
+
+mutable指示符：用来说明是否可以修改捕获的变量
+
+exception：异常设定
+
+return type：返回类型
+
+function body：函数体
+
+
+
+```
+int a = 123;
+  auto f = [a]()mutable { cout << ++a; }; // 不会报错
+  cout << a << endl; // 输出：123
+  f(); // 输出：124
+```
+
+### 可调用对象
+
+对于一个对象或者一个表达式，如果可以对其使用调用运算符，则称为可调用对象，如果类定义了调用运算符，则该类的对象称作函数对象
+
+一个 lambda 表达式表示一个可调用的代码单元
+
+
+
+头文件相互包含：
+
+  a) 分别定义ClassA和ClassB，并在cpp文件中实现之
+      b) 在两个头文件的开头分别用class ClassB;和class ClassA;声明对方
+      c) 在两个cpp文件中分别包含另外一个类的头文件
+
+这种方法切记不可使用类名来定义变量和函数的变量参数，只可用来定义引用或者指针。  
+
+
+
+# Winsock
+
+https://docs.microsoft.com/en-us/windows/win32/winsock/getting-started-with-winsock
+
+f a server wants to listen on both IPv6 and IPv4, two listen sockets must be created, one for IPv6 and one for IPv4. These two sockets must be handled separately by the application.Windows Vista and later offer the ability to create a single IPv6 socket that is put in dual stack mode to listen on both IPv6 and IPv4. 
+
+如果有相关包含错误：
+
+\#define WIN32_LEAN_AND_MEAN
+
+# 远程调试
+
+https://docs.microsoft.com/zh-cn/visualstudio/debugger/remote-debugging-cpp?view=vs-2019
+
+1,安装远程工具并启动
+
+2,在“解决方案资源管理器”中，右键单击该项目并选择“属性”。 打开“调试”选项卡。将“要启动的调试器”更改为“远程 Windows 调试器” 。
+
+
+
+![remote_debug](images\2022\c\remote_debug.png)
+
+
+
+
+
+# 时间转换
+
+
+
+类型time_t
+
+```
+strftime ：格式化struct tm；
+那结构体如何构造？localtime 可以返回，通过传time_t 
+time_t sec = (time_t)1647993599;
+struct tm * timeinfo = localtime(&sec);
+char buffer[80];
+strftime(buffer, 80, "%Y-%m-%d", timeinfo);
+
+```
+

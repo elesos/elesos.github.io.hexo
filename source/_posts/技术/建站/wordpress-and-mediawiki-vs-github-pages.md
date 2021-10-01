@@ -27,11 +27,15 @@ windows下
 https://nodejs.org/en/download/
 
 3. 安装Hexo:
-`npm install -g hexo-cli`
+  `npm install -g hexo-cli`
+
 4. 写作，必须这样才能自动生成文章的创建时间，不要复制md文件再改
-`hexo new post xxx`
+  `hexo new post xxx`    
+
+  可能需要运行npm install
+
 5. 发布
-`hexo clean && hexo g -d -b -f`
+  `hexo clean && hexo g -d -b -f`
 
 其中hexo clean清除public, windows可能需要手动删除public目录
 

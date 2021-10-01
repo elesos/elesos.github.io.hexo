@@ -74,3 +74,25 @@ npm install -g electron
 electron <electron-sample-apps-path>/<sample-name>
 ```
 
+### window
+
+ https://www.electronjs.org/docs/api/browser-window
+
+ 
+
+使窗口显示时没有视觉闪烁:建议立刻显示窗口，并使用接近应用程序背景的 backgroundColor
+
+ 
+
+const win = new BrowserWindow({ backgroundColor: '#2e2c29' })
+ win.loadURL('https://github.com')
+
+ 
+
+子窗口
+  const top = new BrowserWindow()
+  const child = new BrowserWindow({ parent: top }) 
+
+ 
+
+ 创建时设置show=false可以用来执行后台任务

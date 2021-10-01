@@ -124,6 +124,22 @@ zip -0 -r mydirectory.zip mydirectory
 -0 means store and don't compress (-r recursive, -p preserve relative path).
 ```
 
+
+
+**Zip**: you have a folder `foo`, and want to zip it to `myzip.zip`
+
+```
+"C:\Program Files\7-Zip\7z.exe" a  -r myzip.zip -w foo -mem=AES256
+```
+
+**Unzip**: you want to unzip it (`myzip.zip`) to current directory (`./`)
+
+```
+"C:\Program Files\7-Zip\7z.exe" x  myzip.zip  -o./ -y -r  //注意-o后面没有空格
+```
+
+
+
 ## 参考
 
 http://www.ha97.com/4024.html

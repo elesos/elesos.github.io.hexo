@@ -55,3 +55,17 @@ os.environ['SSL_CERT_FILE']='/path/to/lib/python3.8/site-packages/pip/_vendor/ce
 ## 参考
 
 https://stackoverflow.com/questions/10667960/python-requests-throwing-sslerror
+
+
+
+# 中文路径问题
+
+  File "<string>", line 1
+SyntaxError: (unicode error) 'utf-8' codec can't decode byte
+
+
+
+std::string mul_path = strUtf8Path + "python38.zip;";
+mul_path.append(strUtf8Path + "pythondlls");
+ std::wstring python_lib = utf8_to_utf16(mul_path);
+Py_SetPath(python_lib.c_str());
