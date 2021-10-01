@@ -22,15 +22,11 @@ https://www.jianshu.com/p/f1568aaaa845
  名称为：ShowBasedOnVelocityId
  值为：639bc8
 
-![img](https:////upload-images.jianshu.io/upload_images/6932643-200ecc793848b4d8.png?imageMogr2/auto-orient/strip|imageView2/2/w/513/format/webp)
+![](images/2022/1.png)
 
 
 
-
-
-![img](https:////upload-images.jianshu.io/upload_images/6932643-43b19a2135fd0629.png?imageMogr2/auto-orient/strip|imageView2/2/w/399/format/webp)
-
-
+![](images/2022/2.png)
 
 
  5.在openCMD双击里面的 “默认” 设置值为：在此处打开CMD
