@@ -7,7 +7,7 @@ categories:
 date: 2021-07-09 07:13:01
 ---
 
-![](images/2021/git.png)
+![](/images/2021/git.png)
 
 git 默认不区分文件名大小写
 
@@ -410,7 +410,7 @@ git add .  同-A
 git add -u 已经被add的文件（即tracked file） ,不会提交新文件（untracked file）。（git add --update的缩写）即： -u  提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)
 ```
 
-![](images/2021/git_add.png)
+![](/images/2021/git_add.png)
 
 详细请参见git help add
 

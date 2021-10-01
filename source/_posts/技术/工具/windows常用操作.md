@@ -27,9 +27,9 @@ https://www.jianshu.com/p/f1568aaaa845
 
 值为：639bc8
 
-![](images/2022/1.png)
+![](/images/2022/1.png)
 
-![](images/2022/2.png)
+![](/images/2022/2.png)
 
 
 5.在openCMD双击里面的 “默认” 设置值为：在此处打开CMD

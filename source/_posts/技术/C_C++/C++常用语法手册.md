@@ -719,7 +719,7 @@ https://docs.microsoft.com/zh-cn/visualstudio/debugger/remote-debugging-cpp?view
 
 
 
-![remote_debug](images\2022\c\remote_debug.png)
+![remote_debug](/images/2022/c/remote_debug.png)
 
 
 
