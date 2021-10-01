@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="https:&#x2F;&#x2F;doc.qt.io&#x2F;qt-6&#x2F;gettingstarted.html    时间 版本    2005年6月27日 Qt 4.0   2008年5月 Qt 4.4   2012年12月19日 Qt 5.0   2017年5月31日 Qt 5.9   2021.5.25 5.12 LTS   2020年5月26日 Qt 5.15 lts only for Commercial lic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt简明教程">
+<meta property="og:url" content="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/qt/Qt%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+<meta property="og:site_name" content="艺搜天下 | 视频技术博客">
+<meta property="og:description" content="https:&#x2F;&#x2F;doc.qt.io&#x2F;qt-6&#x2F;gettingstarted.html    时间 版本    2005年6月27日 Qt 4.0   2008年5月 Qt 4.4   2012年12月19日 Qt 5.0   2017年5月31日 Qt 5.9   2021.5.25 5.12 LTS   2020年5月26日 Qt 5.15 lts only for Commercial lic">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-02T14:17:26.000Z">
+<meta property="article:modified_time" content="2021-09-21T08:55:51.000Z">
+<meta property="article:author" content="elesos">
+<meta property="article:tag" content="Qt">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/qt/Qt%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Qt简明教程 | 艺搜天下 | 视频技术博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">艺搜天下 | 视频技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">视频技术博客</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/qt/Qt%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Qt简明教程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-02 22:17:26" itemprop="dateCreated datePublished" datetime="2021-07-02T22:17:26+08:00">2021-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-09-21 16:55:51" itemprop="dateModified" datetime="2021-09-21T16:55:51+08:00">2021-09-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Qt/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="https://doc.qt.io/qt-6/gettingstarted.html" target="_blank" rel="noopener">https://doc.qt.io/qt-6/gettingstarted.html</a></p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2005年6月27日</td>
+<td>Qt 4.0</td>
+</tr>
+<tr>
+<td>2008年5月</td>
+<td>Qt 4.4</td>
+</tr>
+<tr>
+<td>2012年12月19日</td>
+<td>Qt 5.0</td>
+</tr>
+<tr>
+<td>2017年5月31日</td>
+<td>Qt 5.9</td>
+</tr>
+<tr>
+<td>2021.5.25</td>
+<td>5.12 LTS</td>
+</tr>
+<tr>
+<td>2020年5月26日</td>
+<td>Qt 5.15 lts only for Commercial licenses</td>
+</tr>
+<tr>
+<td>2020.12.8</td>
+<td>Qt6</td>
+</tr>
+<tr>
+<td>2021年7月1日</td>
+<td>Qt 6.1.2</td>
+</tr>
+</tbody></table>
+<p><a href="https://en.wikipedia.org/wiki/Qt_version_history" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Qt_version_history</a></p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://download.qt.io/archive/qt/5.9/5.9.9/" target="_blank" rel="noopener">https://download.qt.io/archive/qt/5.9/5.9.9/</a> open source offline installers are not available any more since Qt 5.15 </p>
+<p><a href="https://download.qt.io/archive/qt/" target="_blank" rel="noopener">https://download.qt.io/archive/qt/</a></p>
+<p><a href="https://download.qt.io/official_releases/online_installers/" target="_blank" rel="noopener">https://download.qt.io/official_releases/online_installers/</a></p>
+<p>声明槽</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public slots:</span><br></pre></td></tr></table></figure>
+
+<p>关联</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(sender, SIGNAL(signal()), receiver, SLOT(slot()));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>一个信号可以连接多个槽</li>
+<li>一个信号可以连接另外一个信号</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(spinNum, SIGNAL(valueChanged(int)), this, SIGNAL (refreshInfo(int));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>信号与槽的参数个数和类型需要一致</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>为了将界面上的各个组件的分布设计得更加美观，经常使用一些容器类，如 QgoupBox、QtabWidget、QFrame 等</p>
+<h3 id="在UI界面上关联信号与槽"><a href="#在UI界面上关联信号与槽" class="headerlink" title="在UI界面上关联信号与槽"></a>在UI界面上关联信号与槽</h3><p>ui中选中比如一个 chkBoxUnder 组件，右键调出其快捷菜单。在快捷菜单中单击菜单项“Go to slot…”</p>
+<p>头文件声明的函数名上面，右键，选择“Refactor重构”→“Add Definition in elesos.cpp”，就可以自动在cpp中生成定义。</p>
+<p>在 UI 设计器里，单击上方工具栏里的“Edit Signals/Slots”按钮，窗体进入信号与槽函数编辑状态</p>
+<p>将鼠标移动到按钮上方，再按下鼠标左键，移动到窗体的空白区域释放左键，这时出现信号与槽的关联设置对话框。左侧的列表框里信号，右边的列表框里显示了槽函数（如果没有显示，把复选框勾选上）。</p>
+<p><a href="http://c.biancheng.net/view/1822.html" target="_blank" rel="noopener">http://c.biancheng.net/view/1822.html</a></p>
+<p><a href="https://www.cnblogs.com/schips/p/framework-cpp-qt-02-ui-layout-manage.html" target="_blank" rel="noopener">https://www.cnblogs.com/schips/p/framework-cpp-qt-02-ui-layout-manage.html</a></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>安装qt时选择安装源码。</p>
+<p><a href="https://doc.qt.io/qt-6/qtwidgets-tutorials-notepad-example.html" target="_blank" rel="noopener">https://doc.qt.io/qt-6/qtwidgets-tutorials-notepad-example.html</a></p>
+<p>创建一个Qt Widgets Application</p>
+<p>Qt Quick for building modern, fluid, animated UIs.</p>
+<p> 用到什么知识点：文本文件读写</p>
+<p>2,<a href="https://doc.qt.io/qt-6/qtconcurrent-imagescaling-example.html" target="_blank" rel="noopener">https://doc.qt.io/qt-6/qtconcurrent-imagescaling-example.html</a><br> QFuture class represents the result of an asynchronous computation.<br> QPromise class provides a way to store computation results to be accessed by QFuture<br> 异步下载</p>
+<p> <a href="https://doc.qt.io/qt-6/qtexamplesandtutorials.html" target="_blank" rel="noopener">https://doc.qt.io/qt-6/qtexamplesandtutorials.html</a>  这个页面有2个子页面的示例列表。</p>
+<p>参考 </p>
+<p><a href="https://qmlbook.github.io" target="_blank" rel="noopener">https://qmlbook.github.io</a>  focuses on Qt Quick, but also provides the information needed to use QML together with C++.</p>
+<h4 id="常用知识点"><a href="#常用知识点" class="headerlink" title="常用知识点"></a>常用知识点</h4><h5 id="Q-DECLARE-PRIVATE：用于声明对应的私有类的，比如XXXPrivate-类"><a href="#Q-DECLARE-PRIVATE：用于声明对应的私有类的，比如XXXPrivate-类" class="headerlink" title="Q_DECLARE_PRIVATE：用于声明对应的私有类的，比如XXXPrivate 类"></a>Q_DECLARE_PRIVATE：用于声明对应的私有类的，比如XXXPrivate 类</h5><p><a href="https://wiki.qt.io/D-Pointer" target="_blank" rel="noopener">https://wiki.qt.io/D-Pointer</a></p>
+<p>Binary compatibility ：更新库不需要重新编译</p>
+<p>d-pointer：指向一个私有实现子类，d弟，Q_D返回私有子类指针。</p>
+<p>q-pointer:指向父类。</p>
+<p>QMetaObject::invokeMethod调用一个对象的方法</p>
+<h2 id="qt资料"><a href="#qt资料" class="headerlink" title="qt资料"></a>qt资料</h2><p>基本上看一去二三里的这个就够了<a href="https://blog.csdn.net/liang19890820/article/details/50277095" target="_blank" rel="noopener">https://blog.csdn.net/liang19890820/article/details/50277095</a></p>
+<p>Qt 快速入门系列教程  - <a href="http://shouce.jb51.net/qt-beginning/" target="_blank" rel="noopener">http://shouce.jb51.net/qt-beginning/</a>  简洁明了，干净排版，目录清晰。 分基础，图形，数据，网络篇，进阶，过度篇。</p>
+<p>Qt开发学习教程  - <a href="https://blog.51cto.com/u_9291927/2138876" target="_blank" rel="noopener">https://blog.51cto.com/u_9291927/2138876</a>  - 来自天山老妖，51博客上的，分为基础，中阶，高阶，其他。</p>
+<p><a href="https://www.devbean.net/2012/08/qt-study-road-2-catelog/" target="_blank" rel="noopener">https://www.devbean.net/2012/08/qt-study-road-2-catelog/</a> 亮哥推荐</p>
+<p>Q_OBJECT宏： 在类的私有部分声明这个宏</p>
+<p>运行时类别信息（RTTI）：实例化对象所属的类信息在运行时才真正确定  dynamic_cast</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label-&gt;setAttribute(Qt::WA_DeleteOnClose);</span><br></pre></td></tr></table></figure>
+
+<p>所谓信号槽，实际就是观察者模式。</p>
+<p>按钮在 Qt 中被称为<code>QPushButton</code></p>
+<p><code>QDialog::exec()</code>实现应用程序级别的模态对话框，<code>QDialog::show()</code>实现非模态对话框</p>
+<h3 id="书籍推荐"><a href="#书籍推荐" class="headerlink" title="书籍推荐"></a>书籍推荐</h3><p>入门推荐《C++ GUI Qt 4编程》<a href="https://blog.csdn.net/net_syc/article/details/80236963" target="_blank" rel="noopener">https://blog.csdn.net/net_syc/article/details/80236963</a></p>
+<p>qt 源码</p>
+<h1 id="栈和堆"><a href="#栈和堆" class="headerlink" title="栈和堆"></a>栈和堆</h1><p>A a；栈</p>
+<p>堆上创建对象，使用<code>new</code>运算符</p>
+<p>写数据前QMutexLocker locker(&amp;QMutex);</p>
+<p>blockSignals</p>
+<p>qt 用 QEventLoop可以阻塞工作线程，同时不影响主线程</p>
+<p>类似这样的将要删除的接口可以用  QT_DEPRECATED_X(“XXXX”)  定义一下，这样的接口被引用，会有警告信息</p>
+<h2 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h2><h4 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h4><p>All classes that inherit <a href="https://doc.qt.io/qt-5/qobject.html" target="_blank" rel="noopener">QObject</a> have a <code>tr()</code> function. </p>
+<p>QObject::tr(“Hello world!”)</p>
+<h4 id="QScopedPointer"><a href="#QScopedPointer" class="headerlink" title="QScopedPointer"></a>QScopedPointer</h4><p>Q_DECLARE_METATYPE</p>
+<h4 id="QStringList"><a href="#QStringList" class="headerlink" title="QStringList"></a>QStringList</h4><p>字符串列表,从QList <QString>继承而来, 合并字符串使用join( ),类似php的implode,拆分字符串split</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Qt/" rel="tag"># Qt</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/qt/Qt%E5%92%8CElectron%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="next" title="Qt和Electron的区别">
+                  <i class="fa fa-chevron-left"></i> Qt和Electron的区别
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" rel="prev" title="Electron简明教程">
+                  Electron简明教程 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NzUwNi8yNDAwNg=="></div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">2.</span> <span class="nav-text">其它</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在UI界面上关联信号与槽"><span class="nav-number">2.1.</span> <span class="nav-text">在UI界面上关联信号与槽</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">3.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用知识点"><span class="nav-number">3.0.1.</span> <span class="nav-text">常用知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Q-DECLARE-PRIVATE：用于声明对应的私有类的，比如XXXPrivate-类"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">Q_DECLARE_PRIVATE：用于声明对应的私有类的，比如XXXPrivate 类</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qt资料"><span class="nav-number">4.</span> <span class="nav-text">qt资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#书籍推荐"><span class="nav-number">4.1.</span> <span class="nav-text">书籍推荐</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈和堆"><span class="nav-number"></span> <span class="nav-text">栈和堆</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用语法"><span class="nav-number">1.</span> <span class="nav-text">常用语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tr"><span class="nav-number">1.0.1.</span> <span class="nav-text">tr</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QScopedPointer"><span class="nav-number">1.0.2.</span> <span class="nav-text">QScopedPointer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QStringList"><span class="nav-number">1.0.3.</span> <span class="nav-text">QStringList</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="elesos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">elesos</p>
+  <div class="site-description" itemprop="description">视频经验，视频解答，视频教程，视频教学</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/starRTC" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;starRTC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:895377235@qq.com" title="E-Mail &amp;rarr; mailto:895377235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">elesos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

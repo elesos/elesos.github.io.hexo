@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="C++98是第一个C++标准，1998年发布。 C++11，第三个C++标准，2011年 C++14，第四个C++标准，2014年 C++17，第五个C++标准，2017年 C++20 , 2020 下一代是C++23 关键字https:&#x2F;&#x2F;www.runoob.com&#x2F;w3cnote&#x2F;cpp-keyword-intro.html C++库 https:&#x2F;&#x2F;en.cppreference.com&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++常用语法手册">
+<meta property="og:url" content="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/">
+<meta property="og:site_name" content="艺搜天下 | 视频技术博客">
+<meta property="og:description" content="C++98是第一个C++标准，1998年发布。 C++11，第三个C++标准，2011年 C++14，第四个C++标准，2014年 C++17，第五个C++标准，2017年 C++20 , 2020 下一代是C++23 关键字https:&#x2F;&#x2F;www.runoob.com&#x2F;w3cnote&#x2F;cpp-keyword-intro.html C++库 https:&#x2F;&#x2F;en.cppreference.com&#x2F;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://elesos.github.io/images/2022/c/remote_debug.png">
+<meta property="article:published_time" content="2021-07-02T13:17:07.000Z">
+<meta property="article:modified_time" content="2021-10-01T12:33:33.870Z">
+<meta property="article:author" content="elesos">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://elesos.github.io/images/2022/c/remote_debug.png">
+
+<link rel="canonical" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>C++常用语法手册 | 艺搜天下 | 视频技术博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">艺搜天下 | 视频技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">视频技术博客</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++常用语法手册
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-02 21:17:07" itemprop="dateCreated datePublished" datetime="2021-07-02T21:17:07+08:00">2021-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-10-01 20:33:33" itemprop="dateModified" datetime="2021-10-01T20:33:33+08:00">2021-10-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>C++98是第一个C++标准，1998年发布。</p>
+<p>C++11，第三个C++标准，2011年</p>
+<p>C++14，第四个C++标准，2014年</p>
+<p>C++17，第五个C++标准，2017年</p>
+<p>C++20 , 2020</p>
+<p>下一代是C++23</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p><a href="https://www.runoob.com/w3cnote/cpp-keyword-intro.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/cpp-keyword-intro.html</a></p>
+<p>C++库 <a href="https://en.cppreference.com/w/cpp/links/libs" target="_blank" rel="noopener">https://en.cppreference.com/w/cpp/links/libs</a></p>
+<p>范围for</p>
+<p>using代替typedef</p>
+<p><code>using SI=Sales_item</code></p>
+<p>用vector和迭代器代替数组和指针</p>
+<p>用string代替c风格字符串 常量对象只能调用常成员函数</p>
+<p>拷贝构造函数何时调用：</p>
+<p>一个对象初始化另一个对象；函数参数；返回对象</p>
+<p>构造函数调用顺序：先调用内嵌对象的构造函数，按定义顺序 在类外对静态数据成员定义和初始化</p>
+<p>静态函数成员一般用于访问静态数据成员，如果要访问非静态数据，需要传递对象进来。</p>
+<p>常对象（数据成员不能改变）只能调用常成员函数（不能改数据成员，不能调普通函数）</p>
+<p>explicit 构造函数用来防止隐式转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x3D; default; 指示编译器自动生成函数体</span><br><span class="line">建议重载的方法都加了override 关键字。防止出现不正确的继承行为</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://c.biancheng.net/view/400.html" target="_blank" rel="noopener">http://c.biancheng.net/view/400.html</a></p>
+<p>p792 匿名的命名空间替代static声明</p>
+<h1 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#表示：对应变量字符串化  </span><br><span class="line"></span><br><span class="line">##表示：把宏参数名与宏定义代码序列中的标识符连接在一起，形成一个新的标识符</span><br></pre></td></tr></table></figure>
+
+<h1 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h1><p>匿名命名空间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">当定义一个命名空间时，可以忽略这个命名空间的名称：</span><br><span class="line">    namespce &#123;</span><br><span class="line">        char c;</span><br><span class="line">        int i;</span><br><span class="line">        double d;</span><br><span class="line">    &#125;</span><br><span class="line">    编译器在内部会为这个命名空间生成一个唯一的名字，而且还会为这个匿名的命名空间生成一条using指令。所以上面的代码在效果上等同于：</span><br><span class="line">    namespace __UNIQUE_NAME_ &#123;</span><br><span class="line">        char c;</span><br><span class="line">        int i;</span><br><span class="line">        double d;</span><br><span class="line">    &#125;</span><br><span class="line">    using namespace __UNIQUE_NAME_;</span><br></pre></td></tr></table></figure>
+
+<p>在匿名命名空间中声明的名称,具有internal链接属性，这和声明为static的全局名称的链接属性是相同的，即名称的作用域被限制在当前文件中</p>
+<p><strong>C++ 新的标准中提倡使用匿名命名空间,而不推荐使用static</strong></p>
+<p>可以在匿名的空间里面声明很多变量和函数,这样可以省去了对每个变量和函数添加static声明. 实质上匿名空间的功能跟static声明是一样的.</p>
+<h1 id="max"><a href="#max" class="headerlink" title="max"></a>max</h1><p> int max: Value of INT_MAX is 2147483647</p>
+<p><a href="https://docs.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-160" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-160</a></p>
+<h1 id="乘法注意"><a href="#乘法注意" class="headerlink" title="乘法注意"></a>乘法注意</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">interval &#x3D; 29LL * 24 * 3600 * 1000;</span><br></pre></td></tr></table></figure>
+
+<p>不加LL会在赋值之前就溢出</p>
+<h1 id="常用运算符"><a href="#常用运算符" class="headerlink" title="常用运算符"></a>常用运算符</h1><h2 id=""><a href="#" class="headerlink" title="%"></a>%</h2><p>取模运算符“%”的作用是求两个数相除的余数。</p>
+<p>通常用来判断一个数是否能被另一个数整除。</p>
+<p>向上取整 ceil</p>
+<h1 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h1><p><a href="https://www.cplusplus.com/reference/cstdio/fread/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/cstdio/fread/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fseek (pFile , 0 , SEEK_END);</span><br><span class="line">lSize &#x3D; ftell (pFile);</span><br><span class="line">rewind (pFile); &#x2F;&#x2F;Set position of stream to the beginning</span><br></pre></td></tr></table></figure>
+
+<h1 id="Std-atomic-用法"><a href="#Std-atomic-用法" class="headerlink" title="Std::atomic 用法"></a>Std::atomic 用法</h1><p>C++中对共享数据的存取在并发条件下可能会引起data race的undifined行为，需要限制并发程序以某种特定的顺序执行，有两种方式：使用mutex保护共享数据，原子操作</p>
+<p>原子类型操作要不一步完成，要么不做，不可能出现操作一半被切换CPU，这样防止由于多线程指令交叉执行带来的可能错误。非原子操作下，某个线程可能看见的是一个其它线程操作未完成的数据。</p>
+<p>atomic 原子操作支持bool、int、char等数据类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::atomic &lt;bool&gt;   atomic_bool_test1(false);</span><br><span class="line">a.load() 返回数值a的copy</span><br></pre></td></tr></table></figure>
+
+<h1 id="Std-async"><a href="#Std-async" class="headerlink" title="Std::async"></a>Std::async</h1><p>Call function asynchronously</p>
+<p><a href="https://www.cplusplus.com/reference/future/async/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/future/async/</a></p>
+<p>The value returned by fn can be accessed through the future object returned (by calling its member future::get).</p>
+<h1 id="Static-关键字的作用"><a href="#Static-关键字的作用" class="headerlink" title="Static 关键字的作用"></a>Static 关键字的作用</h1><p>\1. 全局静态变量</p>
+<p>在全局变量前加上关键字static，全局变量就定义成一个全局静态变量.</p>
+<p>静态存储区，在整个程序运行期间一直存在。</p>
+<p>初始化：未经初始化的全局静态变量会被自动初始化为0（自动对象的值是任意的，除非被显式初始化）；</p>
+<p>作用域：全局静态变量在声明他的文件之外是不可见的，准确地说是从定义处开始，到本文件结尾。</p>
+<p>\2. 局部静态变量</p>
+<p>在局部变量前加上关键字static，局部变量就成为一个局部静态变量。</p>
+<p>内存中的位置：静态存储区</p>
+<p>初始化：未经初始化的局部静态变量会被自动初始化为0（自动对象的值是任意的，除非被显式初始化）；</p>
+<p>作用域：作用域仍为局部作用域，当定义它的函数或者语句块结束的时候，作用域结束。但是当局部静态变量离开作用域后，并没有销毁，而是仍然驻留在内存当中，只不过我们不能再对它进行访问，直到该函数再次被调用，并且值不变；</p>
+<p>\3. 静态函数</p>
+<p>函数的定义和声明默认情况下都是extern的，但静态函数只是在声明他的文件当中可见，不能被其他文件所用。</p>
+<p>函数的实现使用static修饰，那么这个函数只可在本cpp内使用，不会同其他cpp中的同名函数引起冲突；</p>
+<p>注：不要在头文件中声明static的全局函数，不要在cpp内声明非static的全局函数，如果你要在多个cpp中复用该函数，就把它的声明提到头文件里去，否则cpp内部声明需加上static修饰；</p>
+<p>\4. 类的静态成员</p>
+<p>在类中，静态成员可以实现多个对象之间的数据共享，并且使用静态数据成员还不会破坏隐藏的原则，即保证了安全性。因此，静态成员是类的所有对象中共享的成员，而不是某个对象的成员。对多个对象来说，静态数据成员只存储一处，供所有对象共用</p>
+<p>\5. 类的静态函数</p>
+<p>静态成员函数和静态数据成员一样，它们都属于类的静态成员，它们都不是对象成员。因此，对静态成员的引用不需要用对象名。</p>
+<p>在静态成员函数的实现中不能直接引用类中说明的非静态成员，可以引用类中说明的静态成员（这点非常重要）。如果静态成员函数中要引用非静态成员时，可通过对象来引用。</p>
+<h1 id="Sprintf"><a href="#Sprintf" class="headerlink" title="Sprintf"></a>Sprintf</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int sprintf ( char * str, const char * format, ... );</span><br></pre></td></tr></table></figure>
+
+<p>stored C string in the buffer pointed by str.</p>
+<p>On success, the total number of characters written is returned. 否则返回负数</p>
+<p><a href="https://www.cplusplus.com/reference/cstdio/sprintf/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/cstdio/sprintf/</a></p>
+<h1 id="Std-bind"><a href="#Std-bind" class="headerlink" title="Std::bind"></a>Std::bind</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind (Fn&amp;&amp; fn, Args&amp;&amp;... args);</span><br></pre></td></tr></table></figure>
+
+<p>Returns a function object based on fn, but with its arguments bound to args.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::bind(&amp;callback);</span><br><span class="line">std::bind(&amp;aClass::callback, this);</span><br><span class="line">std::bind(&amp;aClass::callback, this， info);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.cplusplus.com/reference/functional/bind/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/functional/bind/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">using namespace std::placeholders;    &#x2F;&#x2F; adds visibility of _1, _2, _3  占位</span><br></pre></td></tr></table></figure>
+
+<h1 id="Std-condition-variable"><a href="#Std-condition-variable" class="headerlink" title="Std::condition variable"></a>Std::condition variable</h1><p><a href="https://www.cplusplus.com/reference/condition_variable/condition_variable/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/condition_variable/condition_variable/</a></p>
+<p>block the calling thread until notified to resume.</p>
+<p>It uses a unique_lock to lock the thread when one of its wait functions is called. The thread remains blocked until woken up by another thread that calls a notification function on the same condition_variable object.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wait  The execution of the current thread  is blocked until notified. 第2个参数：A callable object or function that takes no arguments and returns a value that can be evaluated as a bool. This is called repeatedly until it evaluates to true.</span><br><span class="line">notify_one</span><br><span class="line">notify_all</span><br></pre></td></tr></table></figure>
+
+<h1 id="Std-remove"><a href="#Std-remove" class="headerlink" title="Std::remove"></a>Std::remove</h1><p>Remove value from range</p>
+<p><a href="https://www.cplusplus.com/reference/algorithm/remove/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/algorithm/remove/</a></p>
+<h1 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h1><p>c++11开始，可以将大型的对象直接返回，不必担心拷贝代价</p>
+<h1 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h1><p>auto_ptr, shared_ptr, weak_ptr, unique_ptr 其中后三个是c++11支持，第一个已经被11弃用。</p>
+<p>智能指针的作用是管理一个指针，因为存在以下这种情况：申请的空间在函数结束时忘记释放，造成内存泄漏。使用智能指针可以很大程度上避免这个问题， 因为智能指针就是一个类，当超出了类的作用域时，类会自动调用析构函数，析构函数会自动释放资源。 所以智能指针的作用就是在函数结束时自动释放内存空间，不需要手动释放内存空间。</p>
+<h2 id="auto-ptr"><a href="#auto-ptr" class="headerlink" title="auto_ptr"></a>auto_ptr</h2><p>c++98的方案，cpp11已经抛弃</p>
+<p>采用所有权模式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auto_ptr&lt; string&gt; p1 (new string (&quot;hello world”));</span><br><span class="line">auto_ptr&lt;string&gt;  p2;</span><br><span class="line">p2 &#x3D; p1; &#x2F;&#x2F;auto_ptr不会报错.</span><br></pre></td></tr></table></figure>
+
+<p>此时不会报错，p2剥夺了p1的所有权，但是当程序运行时访问p1将会报错。所以auto_ptr的缺点是：存在潜在的内存崩溃问题！</p>
+<h2 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h2><p>unique_ptr（替换auto_ptr）</p>
+<p>unique_ptr实现独占式拥有或严格拥有概念，保证同一时间内只有一个智能指针可以指向该对象。它对于避免资源泄露 (例如“以new创建对象后因为发生异常而忘记调用delete”)特别有用。</p>
+<p>采用所有权模式，还是上面那个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">unique_ptr&lt;string&gt; p3 (new string (&quot;auto&quot;));   &#x2F;&#x2F;#4</span><br><span class="line">unique_ptr&lt;string&gt; p4；                       &#x2F;&#x2F;#5</span><br><span class="line">p4 &#x3D; p3;&#x2F;&#x2F;此时会报错！！</span><br></pre></td></tr></table></figure>
+
+<p>编译器认为p4=p3非法，避免了p3不再指向有效数据的问题。因此，unique_ptr比auto_ptr更安全。</p>
+<p>另外unique_ptr还有更聪明的地方：当程序试图将一个 unique_ptr 赋值给另一个时，如果源 unique_ptr 是个临时右值，编译器允许这么做； 如果源 unique_ptr 将存在一段时间，编译器将禁止这么做，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">unique_ptr&lt;string&gt; pu1(new string (&quot;hello world&quot;));</span><br><span class="line">unique_ptr&lt;string&gt; pu2;</span><br><span class="line">pu2 &#x3D; pu1;                                      &#x2F;&#x2F; #1 not allowed</span><br><span class="line">unique_ptr&lt;string&gt; pu3;</span><br><span class="line">pu3 &#x3D; unique_ptr&lt;string&gt;(new string (&quot;You&quot;));   &#x2F;&#x2F; #2 allowed</span><br></pre></td></tr></table></figure>
+
+<p>其中#1留下悬挂的unique_ptr(pu1)，可能导致危害。而#2不会留下悬挂的unique_ptr，因为它调用 unique_ptr 的构造函数， 该构造函数创建的临时对象在其所有权让给 pu3 后就会被销毁。</p>
+<p>注：如果确实想执行类似与#1的操作，要安全的重用这种指针，可给它赋新值。C++有一个标准库函数std::move()，让你能够将一个unique_ptr赋给另一个。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">unique_ptr&lt;string&gt; ps1, ps2;</span><br><span class="line">ps1 &#x3D; demo(&quot;hello&quot;);</span><br><span class="line">ps2 &#x3D; move(ps1);  &#x2F;&#x2F;#3</span><br><span class="line">ps1 &#x3D; demo(&quot;elesos&quot;);</span><br><span class="line">cout &lt;&lt; *ps2 &lt;&lt; *ps1 &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<h2 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr</h2><p>shared_ptr实现共享式拥有。多个智能指针可以指向相同对象，该对象和其相关资源会在“最后一个引用被销毁”时释放。 从名字share就可以看出资源可以被多个指针共享，它使用计数机制来表明资源被几个指针共享。 可以通过成员函数use_count()来查看资源的所有者个数。除了可以通过new来构造，还可以通过传入auto_ptr, unique_ptr,weak_ptr来构造。 当我们调用release()时，当前指针会释放资源所有权，计数减一。当计数等于0时，资源会被释放。</p>
+<p>shared_ptr 是为了解决 auto_ptr 在对象所有权上的局限性(auto_ptr 是独占的), 在使用引用计数的机制上提供了可以共享所有权的智能指针。</p>
+<p>成员函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">use_count 返回引用计数的个数</span><br><span class="line">unique 返回是否是独占所有权( use_count 为 1)</span><br><span class="line">swap 交换两个 shared_ptr 对象(即交换所拥有的对象)</span><br><span class="line">reset 放弃内部原对象的所有权, 会引起原有对象的引用计数减少  https:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;memory&#x2F;shared_ptr&#x2F;reset&#x2F;</span><br><span class="line"></span><br><span class="line">  std::shared_ptr&lt;int&gt; sp;  &#x2F;&#x2F; empty</span><br><span class="line">  sp.reset (new int);       &#x2F;&#x2F; takes ownership of pointer</span><br><span class="line">  *sp&#x3D;10;</span><br><span class="line">  std::cout &lt;&lt; *sp &lt;&lt; &#39;\n&#39;;&#x2F;&#x2F;10</span><br><span class="line"></span><br><span class="line">  sp.reset (new int);       &#x2F;&#x2F; deletes managed object, acquires new pointer</span><br><span class="line">  *sp&#x3D;20;</span><br><span class="line">  std::cout &lt;&lt; *sp &lt;&lt; &#39;\n&#39;;  &#x2F;&#x2F;20</span><br><span class="line"></span><br><span class="line">  sp.reset();               &#x2F;&#x2F; deletes managed object</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">get 返回内部对象(指针), 由于已经重载了()方法, 因此和直接使用对象是一样的.如 shared_ptr&lt;int&gt; sp(new int(1)); sp 与 sp.get()是等价的  ，Returns the stored pointer.   https:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;memory&#x2F;shared_ptr&#x2F;get&#x2F;</span><br><span class="line"></span><br><span class="line">int* p &#x3D; new int (10);</span><br><span class="line"> std::shared_ptr&lt;int&gt; a (p);</span><br><span class="line"> if (a.get()&#x3D;&#x3D;p)</span><br><span class="line">   std::cout &lt;&lt; &quot;a and p point to the same location\n&quot;;</span><br><span class="line"> &#x2F;&#x2F; three ways of accessing the same address:</span><br><span class="line"> std::cout &lt;&lt; *a.get() &lt;&lt; &quot;\n&quot;;  &#x2F;&#x2F;不是a.get()! a.get()&#x3D;&#x3D;p</span><br><span class="line"> std::cout &lt;&lt; *a &lt;&lt; &quot;\n&quot;;</span><br><span class="line"> std::cout &lt;&lt; *p &lt;&lt; &quot;\n&quot;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h2><p>weak_ptr是一种不控制对象生命周期的智能指针, 它指向一个 shared_ptr 管理的对象. 进行该对象内存管理的是那个强引用的 shared_ptr. weak_ptr只是提供了对管理对象的一个访问手段。weak_ptr 设计的目的是为了配合 shared_ptr 而引入的，用来协助 shared_ptr 工作, 它只可以从一个 shared_ptr 或另一个 weak_ptr 对象构造,</p>
+<p>它的构造和析构不会引起引用记数的增加或减少。</p>
+<p>weak_ptr是用来解决shared_ptr相互引用时的死锁问题,如果两个shared_ptr相互引用,那么这两个指针的引用计数永远不可能为0,资源永远不会释放。</p>
+<p>weak_ptr是对对象的一种弱引用，不会增加对象的引用计数，和shared_ptr之间可以相互转化，shared_ptr可以直接赋值给它，</p>
+<p>它可以通过调用lock函数来获得shared_ptr。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class B;</span><br><span class="line">class A&#123;</span><br><span class="line">	public:</span><br><span class="line">	shared_ptr&lt;B&gt; pb_;</span><br><span class="line">	~A()&#123;</span><br><span class="line">		cout&lt;&lt;&quot;A delete\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class B&#123;</span><br><span class="line">    public:</span><br><span class="line">	shared_ptr&lt;A&gt; pa_;</span><br><span class="line">	~B()&#123;</span><br><span class="line">		cout&lt;&lt;&quot;B delete\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void fun()&#123;</span><br><span class="line">	shared_ptr&lt;B&gt; pb(new B());</span><br><span class="line">	shared_ptr&lt;A&gt; pa(new A());</span><br><span class="line">	pb-&gt;pa_ &#x3D; pa;</span><br><span class="line">	pa-&gt;pb_ &#x3D; pb;</span><br><span class="line">	cout&lt;&lt;pb.use_count()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;pa.use_count()&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	fun();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到fun函数中pa ，pb之间互相引用，两个资源的引用计数为2，当跳出函数时，智能指针pa，pb析构时两个资源的引用计数会减一， 但是两者引用计数还是为1，导致跳出函数时资源没有被释放（A B的析构函数没有被调用），如果把其中一个改为weak_ptr就可以了， 我们把类A里面的shared_ptr pb_; 改为weak_ptr pb_; 这样的话，资源B的引用开始就只有1，当pb析构时，B的计数变为0，B得到释放，B释放的同时也会使A的计数减一，同时pa析构时使A的计数减一，那么A的计数为0，A得到释放。</p>
+<p>注意我们不能通过weak_ptr直接访问对象的方法，比如B对象中有一个方法print(),我们不能这样访问，pa-&gt;pb_-&gt;print(); pb_是一个weak_ptr，应该先把它转化为shared_ptr,如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shared_ptr p &#x3D; pa-&gt;pb_.lock(); </span><br><span class="line">p-&gt;print();</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="线程thread"><a href="#线程thread" class="headerlink" title="线程thread"></a>线程thread</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">std::thread thread_obj(func, params);</span><br><span class="line"></span><br><span class="line">std::thread::join()  &#x2F;&#x2F;wait for a thread </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> std::thread t1(callable);   &#x2F;&#x2F; Start thread t1   </span><br><span class="line"> t1.join(); &#x2F;&#x2F; Wait for t1 to finish</span><br><span class="line"> </span><br><span class="line"> if(joinable())&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">线程是可结合joinable或者可分离detached的。</span><br><span class="line">一个可结合线程是可以被其它线程回收资源和杀死结束的，</span><br><span class="line">而对于detached状态的线程，其资源不能被其它线程回收和杀死，只能等待线程结束才能由系统自动释放。</span><br><span class="line"></span><br><span class="line">只有处于活动状态线程才能调用join，可以通过joinable()函数检查;</span><br><span class="line">join 会使当前线程阻塞，直到目标线程执行完毕</span><br><span class="line">join只能被调用一次，之后joinable就会变为false，表示线程执行完毕；</span><br><span class="line"></span><br><span class="line">以下情况不可结合 检查线程是否可被join</span><br><span class="line">1,默认构造的</span><br><span class="line">2，已调用过join或detach</span><br><span class="line">https:&#x2F;&#x2F;vimsky.com&#x2F;zh-tw&#x2F;examples&#x2F;usage&#x2F;thread-joinable-function-in-c.html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">终止线程，需要先设置一个循环退出变量，然后检查是否joinable,然后用join等待退出</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="sleep"><a href="#sleep" class="headerlink" title="sleep"></a>sleep</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> std::this_thread::sleep_for(std::chrono::seconds(1));</span><br><span class="line">std::this_thread::sleep_for(std::chrono::milliseconds(interval));</span><br><span class="line"></span><br><span class="line">#include &lt;chrono&gt;</span><br><span class="line">auto start &#x3D; std::chrono::high_resolution_clock::now(); &#x2F;&#x2F;</span><br><span class="line">  std::this_thread::sleep_for(2000ms);  &#x2F;&#x2F;Blocks the execution of the current thread</span><br><span class="line">  auto end &#x3D; std::chrono::high_resolution_clock::now();</span><br><span class="line">  std::chrono::duration&lt;double, std::milli&gt; elapsed &#x3D; end-start;</span><br><span class="line">  std::cout &lt;&lt; &quot;Waited &quot; &lt;&lt; elapsed.count() &lt;&lt; &quot; ms\n&quot;;   &#x2F;&#x2F;Waited 2000.12 ms</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Sleep 函数告诉操作系统 “在未来的多少毫秒内我不参与 CPU 竞争”。</p>
+<p>Thread.Sleep(0) 的作用是 “触发操作系统立刻重新进行一次 CPU 竞争”。竞争的结果也许是当前线程仍然获得 CPU 控制权，也许会换成别的线程获得 CPU 控制权。</p>
+<p>1秒(s) ＝1000毫秒(ms)</p>
+<p>1毫秒(ms)＝1000微秒 (us)</p>
+<p>1微秒(us)＝1000纳秒 (ns)</p>
+<p>1秒=10的9次方</p>
+<p><a href="https://zh.wikipedia.org/zh-hans/数量级_(时间)" target="_blank" rel="noopener">https://zh.wikipedia.org/zh-hans/%E6%95%B0%E9%87%8F%E7%BA%A7_(%E6%97%B6%E9%97%B4)</a></p>
+<p>1ks千秒=10的3次方秒</p>
+<p>1Ms兆秒=10的6次方秒</p>
+<p>1吉秒Gs=10的9次方秒，约31.7年。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">离开作用域就释放mutex了</span><br><span class="line">std::lock_guard&lt;std::mutex&gt; lock(io_mutex); &#x2F;&#x2F;lock_guard是一个类，是mutex的包装 https:&#x2F;&#x2F;en.cppreference.com&#x2F;w&#x2F;cpp&#x2F;thread&#x2F;lock_guard</span><br><span class="line">std::unique_lock&lt;std::mutex&gt; locker(mutex_);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.cplusplus.com/reference/mutex/unique_lock/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/mutex/unique_lock/</a></p>
+<p>A <code>lock_guard</code> always holds a lock from its construction to its destruction. A <code>unique_lock</code> can be created without immediately locking, can unlock at any point in its existence, and can transfer ownership of the lock from one instance to another.</p>
+<h2 id="detach"><a href="#detach" class="headerlink" title="detach"></a>detach</h2><p>使用join(),线程运行完,main函数才能结束。</p>
+<p>当使用detach()函数时，主调线程继续运行，被调线程驻留后台运行，主调线程无法再取得该被调线程的控制权。当主调线程结束时，由运行时库负责清理与被调线程相关的资源。使用detach(),main函数不用等待线程结束才能结束。有时候线程还没运行完，main函数就已经结束了。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://en.cppreference.com/w/cpp/thread/thread/detach" target="_blank" rel="noopener">https://en.cppreference.com/w/cpp/thread/thread/detach</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/thread/thread/joinable" target="_blank" rel="noopener">https://en.cppreference.com/w/cpp/thread/thread/joinable</a></p>
+<p><a href="https://www.cplusplus.com/reference/thread/thread/detach/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/thread/thread/detach/</a></p>
+<p><a href="https://www.geeksforgeeks.org/multithreading-in-cpp/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/multithreading-in-cpp/</a></p>
+<h1 id="常用数据结构"><a href="#常用数据结构" class="headerlink" title="常用数据结构"></a>常用数据结构</h1><h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> std::list&lt;int&gt; first;                                &#x2F;&#x2F; empty list of ints</span><br><span class="line"> std::list&lt;int&gt; second (4,100);                       &#x2F;&#x2F; four ints with value 100</span><br><span class="line"> std::list&lt;int&gt; third (second.begin(),second.end());  &#x2F;&#x2F; iterating through second</span><br><span class="line"> std::list&lt;int&gt; fourth (third);                       &#x2F;&#x2F; a copy of third</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">mylist.push_back(77);</span><br><span class="line"></span><br><span class="line">mylist.front()</span><br><span class="line"></span><br><span class="line"> std::list&lt; std::pair&lt;int,char&gt; &gt; mylist;</span><br><span class="line"> mylist.emplace_front(10,&#39;a&#39;);</span><br><span class="line"> </span><br><span class="line"> mylist.emplace_back(10,&#39;a&#39;);</span><br><span class="line"> mylist.emplace_back(20,&#39;b&#39;);</span><br><span class="line"> </span><br><span class="line"> first.assign (7,100);                      &#x2F;&#x2F; 7 ints with value 100</span><br><span class="line"> second.assign (first.begin(),first.end()); &#x2F;&#x2F; a copy of first</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> std::list&lt; std::pair&lt;int,char&gt; &gt; mylist;</span><br><span class="line"> mylist.emplace ( mylist.begin(), 100, &#39;x&#39; );</span><br><span class="line"> </span><br><span class="line">erase  根据位置删除</span><br><span class="line">remove 根据值删除</span><br><span class="line">double mydoubles[]&#x3D;&#123; 12.15,  2.72, 73.0,  12.77,  3.14,  12.77, 73.35, 72.25, 15.3,  72.25 &#125;;</span><br><span class="line">std::list&lt;double&gt; mylist (mydoubles,mydoubles+10);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.cplusplus.com/reference/list/list/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/list/list/</a></p>
+<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">c.clear()                   移除容器中所有数据。</span><br><span class="line">c.empty()                 判断容器是否为空。</span><br><span class="line">c.erase(pos)             删除pos位置的数据</span><br><span class="line">c.erase(beg,end)       删除[beg,end)区间的数据</span><br><span class="line">c.front()                  传回第一个数据。</span><br><span class="line">c.insert(pos,elem)      在pos位置插入一个elem拷贝</span><br><span class="line">c.pop_back()            删除最后一个数据。</span><br><span class="line">c.push_back(elem)     在尾部加入一个数据。</span><br><span class="line">emplace_back</span><br><span class="line">c.resize(num)            重新设置该容器的大小</span><br><span class="line">c.size()                    返回容器中实际数据的个数。</span><br><span class="line">c.begin()                  返回指向容器第一个元素的迭代器</span><br><span class="line">c.end()                    返回指向容器最后一个元素的迭代器</span><br></pre></td></tr></table></figure>
+
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="pair"><a href="#pair" class="headerlink" title="pair"></a>pair</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;utility&gt;      &#x2F;&#x2F; std::pair, std::make_pair</span><br><span class="line"></span><br><span class="line">pair &lt;string,double&gt; product1;                     &#x2F;&#x2F; default constructor</span><br><span class="line">pair &lt;string,double&gt; product2 (&quot;tomatoes&quot;,2.30);   &#x2F;&#x2F; value init</span><br><span class="line">pair &lt;string,double&gt; product3 (product2);          &#x2F;&#x2F; copy constructor</span><br><span class="line"></span><br><span class="line">product1 &#x3D; make_pair(string(&quot;lightbulbs&quot;), 0.99);   &#x2F;&#x2F; using make_pair (move)</span><br><span class="line">g2 &#x3D; make_pair(1, &#39;a&#39;);</span><br><span class="line"></span><br><span class="line">product2.first &#x3D; &quot;shoes&quot;;                &#x2F;&#x2F;赋值</span><br><span class="line">product2.second &#x3D; 39.90;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.cplusplus.com/reference/utility/pair/pair/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/utility/pair/pair/</a></p>
+<p><a href="https://www.geeksforgeeks.org/pair-in-cpp-stl/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/pair-in-cpp-stl/</a></p>
+<h3 id="map-1"><a href="#map-1" class="headerlink" title="map"></a>map</h3><p>map are slower than unordered_map containers to access individual elements by their key, but they allow the direct iteration迭代 on subsets based on their order.</p>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><p>元素排了序</p>
+<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mymap.insert ( pair&lt;char,int&gt;(&#39;a&#39;,100) );  &#x2F;&#x2F;map_name.insert(&#123;key, element&#125;)</span><br><span class="line">mymap.insert (it, pair&lt;char,int&gt;(&#39;b&#39;,300));</span><br><span class="line">anothermap.insert(mymap.begin(),mymap.find(&#39;c&#39;));  </span><br><span class="line"></span><br><span class="line">map&lt;char,int&gt; mymap;</span><br><span class="line">mymap.emplace(&#39;x&#39;,100);  &#x2F;&#x2F;map_name.emplace(key, element)</span><br><span class="line">for (auto &amp;x: mymap)</span><br><span class="line">   cout &lt;&lt; &quot; [&quot; &lt;&lt; x.first &lt;&lt; &#39;:&#39; &lt;&lt; x.second &lt;&lt; &#39;]&#39;;</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line"> find</span><br><span class="line"> </span><br><span class="line"> 删除</span><br><span class="line"> mymap.erase (it);  </span><br><span class="line"> mymap.erase (&#39;c&#39;);                  &#x2F;&#x2F; erasing by key</span><br><span class="line"> mymap.erase ( it, mymap.end() );    &#x2F;&#x2F; erasing by range</span><br><span class="line"></span><br><span class="line">clear</span><br><span class="line">count(key) &#x2F;&#x2F;Count elements with a specific key</span><br></pre></td></tr></table></figure>
+
+<h4 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h4><p>all containers (vector, stack, queue, set, map, etc) support both insert and emplace operations.</p>
+<p>emplace不copy of object.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ms.insert(make_pair(&#39;b&#39;, 25));</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/</a></p>
+<p><a href="https://www.cplusplus.com/reference/map/map/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/map/map/</a></p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>protected成员：对于子女、朋友来说，就是public的，可以自由使用，没有任何限制，而对于其他的外部class，protected就变成private。</p>
+<h2 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h2><p>方便定义匿名函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[capture list] (params list) mutable exception-&gt; return type &#123; function body &#125;</span><br><span class="line">[capture list] (params list) -&gt; return type &#123;function body&#125;</span><br><span class="line">[capture list] (params list) &#123;function body&#125;</span><br><span class="line">[capture list] &#123;function body&#125;</span><br></pre></td></tr></table></figure>
+
+<p>capture list：捕获外部变量列表 , &amp;, a, b除a和b按值进行传递外，其他参数都按引用进行传递。 a, &amp;b 将a按值进行传递，b按引用进行传递。 =，&amp;a, &amp;b 除a和b按引用进行传递外，其他参数都按值进行传递。</p>
+<p>params list：形参</p>
+<p>mutable指示符：用来说明是否可以修改捕获的变量</p>
+<p>exception：异常设定</p>
+<p>return type：返回类型</p>
+<p>function body：函数体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int a &#x3D; 123;</span><br><span class="line">  auto f &#x3D; [a]()mutable &#123; cout &lt;&lt; ++a; &#125;; &#x2F;&#x2F; 不会报错</span><br><span class="line">  cout &lt;&lt; a &lt;&lt; endl; &#x2F;&#x2F; 输出：123</span><br><span class="line">  f(); &#x2F;&#x2F; 输出：124</span><br></pre></td></tr></table></figure>
+
+<h3 id="可调用对象"><a href="#可调用对象" class="headerlink" title="可调用对象"></a>可调用对象</h3><p>对于一个对象或者一个表达式，如果可以对其使用调用运算符，则称为可调用对象，如果类定义了调用运算符，则该类的对象称作函数对象</p>
+<p>一个 lambda 表达式表示一个可调用的代码单元</p>
+<p>头文件相互包含：</p>
+<p>  a) 分别定义ClassA和ClassB，并在cpp文件中实现之<br>      b) 在两个头文件的开头分别用class ClassB;和class ClassA;声明对方<br>      c) 在两个cpp文件中分别包含另外一个类的头文件</p>
+<p>这种方法切记不可使用类名来定义变量和函数的变量参数，只可用来定义引用或者指针。  </p>
+<h1 id="Winsock"><a href="#Winsock" class="headerlink" title="Winsock"></a>Winsock</h1><p><a href="https://docs.microsoft.com/en-us/windows/win32/winsock/getting-started-with-winsock" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/windows/win32/winsock/getting-started-with-winsock</a></p>
+<p>f a server wants to listen on both IPv6 and IPv4, two listen sockets must be created, one for IPv6 and one for IPv4. These two sockets must be handled separately by the application.Windows Vista and later offer the ability to create a single IPv6 socket that is put in dual stack mode to listen on both IPv6 and IPv4. </p>
+<p>如果有相关包含错误：</p>
+<p>#define WIN32_LEAN_AND_MEAN</p>
+<h1 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h1><p><a href="https://docs.microsoft.com/zh-cn/visualstudio/debugger/remote-debugging-cpp?view=vs-2019" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/visualstudio/debugger/remote-debugging-cpp?view=vs-2019</a></p>
+<p>1,安装远程工具并启动</p>
+<p>2,在“解决方案资源管理器”中，右键单击该项目并选择“属性”。 打开“调试”选项卡。将“要启动的调试器”更改为“远程 Windows 调试器” 。</p>
+<p><img src="/images/2022/c/remote_debug.png" alt="remote_debug"></p>
+<h1 id="时间转换"><a href="#时间转换" class="headerlink" title="时间转换"></a>时间转换</h1><p>类型time_t</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">strftime ：格式化struct tm；</span><br><span class="line">那结构体如何构造？localtime 可以返回，通过传time_t </span><br><span class="line">time_t sec &#x3D; (time_t)1647993599;</span><br><span class="line">struct tm * timeinfo &#x3D; localtime(&amp;sec);</span><br><span class="line">char buffer[80];</span><br><span class="line">strftime(buffer, 80, &quot;%Y-%m-%d&quot;, timeinfo);</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C-C/" rel="tag"># C/C++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/" rel="next" title="C++经典书籍推荐">
+                  <i class="fa fa-chevron-left"></i> C++经典书籍推荐
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/FLV%E6%A0%BC%E5%BC%8F/" rel="prev" title="FLV格式">
+                  FLV格式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NzUwNi8yNDAwNg=="></div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字"><span class="nav-number">1.</span> <span class="nav-text">关键字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#宏"><span class="nav-number"></span> <span class="nav-text">宏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#namespace"><span class="nav-number"></span> <span class="nav-text">namespace</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#max"><span class="nav-number"></span> <span class="nav-text">max</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#乘法注意"><span class="nav-number"></span> <span class="nav-text">乘法注意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用运算符"><span class="nav-number"></span> <span class="nav-text">常用运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">%</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件读写"><span class="nav-number"></span> <span class="nav-text">文件读写</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Std-atomic-用法"><span class="nav-number"></span> <span class="nav-text">Std::atomic 用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Std-async"><span class="nav-number"></span> <span class="nav-text">Std::async</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Static-关键字的作用"><span class="nav-number"></span> <span class="nav-text">Static 关键字的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sprintf"><span class="nav-number"></span> <span class="nav-text">Sprintf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Std-bind"><span class="nav-number"></span> <span class="nav-text">Std::bind</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Std-condition-variable"><span class="nav-number"></span> <span class="nav-text">Std::condition variable</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Std-remove"><span class="nav-number"></span> <span class="nav-text">Std::remove</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新特性"><span class="nav-number"></span> <span class="nav-text">新特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#智能指针"><span class="nav-number"></span> <span class="nav-text">智能指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#auto-ptr"><span class="nav-number">1.</span> <span class="nav-text">auto_ptr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unique-ptr"><span class="nav-number">2.</span> <span class="nav-text">unique_ptr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shared-ptr"><span class="nav-number">3.</span> <span class="nav-text">shared_ptr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weak-ptr"><span class="nav-number">4.</span> <span class="nav-text">weak_ptr</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程thread"><span class="nav-number"></span> <span class="nav-text">线程thread</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sleep"><span class="nav-number">1.</span> <span class="nav-text">sleep</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#detach"><span class="nav-number">2.</span> <span class="nav-text">detach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用数据结构"><span class="nav-number"></span> <span class="nav-text">常用数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#list"><span class="nav-number">1.</span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vector"><span class="nav-number">2.</span> <span class="nav-text">vector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map"><span class="nav-number">3.</span> <span class="nav-text">map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pair"><span class="nav-number">3.1.</span> <span class="nav-text">pair</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map-1"><span class="nav-number">3.2.</span> <span class="nav-text">map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特性"><span class="nav-number">3.2.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作"><span class="nav-number">3.2.2.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对比"><span class="nav-number">3.2.3.</span> <span class="nav-text">对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类"><span class="nav-number">4.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lambda"><span class="nav-number">5.</span> <span class="nav-text">Lambda</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可调用对象"><span class="nav-number">5.1.</span> <span class="nav-text">可调用对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Winsock"><span class="nav-number"></span> <span class="nav-text">Winsock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#远程调试"><span class="nav-number"></span> <span class="nav-text">远程调试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间转换"><span class="nav-number"></span> <span class="nav-text">时间转换</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="elesos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">elesos</p>
+  <div class="site-description" itemprop="description">视频经验，视频解答，视频教程，视频教学</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/starRTC" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;starRTC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:895377235@qq.com" title="E-Mail &amp;rarr; mailto:895377235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">elesos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="视频经验，视频解答，视频教程，视频教学">
+<meta property="og:type" content="website">
+<meta property="og:title" content="艺搜天下 | 视频技术博客">
+<meta property="og:url" content="https://elesos.github.io/">
+<meta property="og:site_name" content="艺搜天下 | 视频技术博客">
+<meta property="og:description" content="视频经验，视频解答，视频教程，视频教学">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="elesos">
+<meta property="article:tag" content="视频经验，视频解答，视频教程，视频教学">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://elesos.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>艺搜天下 | 视频技术博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">艺搜天下 | 视频技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">视频技术博客</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/09/19/%E6%8A%80%E6%9C%AF/C_C++/Boost%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/19/%E6%8A%80%E6%9C%AF/C_C++/Boost%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Boost简明教程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-09-19 17:15:14" itemprop="dateCreated datePublished" datetime="2021-09-19T17:15:14+08:00">2021-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-09-21 13:53:54" itemprop="dateModified" datetime="2021-09-21T13:53:54+08:00">2021-09-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%8D%E5%A5%BD%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">不好分类</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>编译</p>
+<p>Boost.Jam（<strong>BJam</strong>）包含在知名的Boost C++ library 中，類似make 的建構工具。</p>
+<p>bjam.exe 是老版本，b2是bjam的升级版本</p>
+<p>vs2017</p>
+<p>bjam.exe install –prefix=”boost_1_70_vs2017” –libdir=”boost_1_70_vs2017/lib/Win” –toolset=msvc-14.1 link=static runtime-link=shared threading=multi address-model=64 –with-filesystem debug release</p>
+<p>mac</p>
+<p>./bootstrap.sh –with-libraries=filesystem,system –prefix=/Users/xxx/Desktop/boost </p>
+<p>sudo ./b2 cxxflags=-std=c++11 –libdir=/Users/xxx/Desktop/boost/lib/Mac link=static runtime-link=shared threading=multi address-model=64 –with-filesystem –with-system install</p>
+<p>boost库大多数组件不需要编译链接就可以使用，在自己的工程中直接包含头文件即可。</p>
+<p><code>b2 --show-libraries</code>命令可查看所有必须编译才能使用的库。</p>
+<p>完全安装boost<br><code>bjam --buildtype=complete</code></p>
+<p>runtime-link=shared指定动态链接C和C++ 运行库</p>
+<p><a href="https://www.cnblogs.com/wondering/archive/2009/05/21/boost_setup.html" target="_blank" rel="noopener">https://www.cnblogs.com/wondering/archive/2009/05/21/boost_setup.html</a></p>
+<p>执行根目录下的bootstrap.bat，编译后的bjam.exe会自动拷贝到该目录下（</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/09/09/%E6%8A%80%E6%9C%AF/C_C++/UML/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/09/%E6%8A%80%E6%9C%AF/C_C++/UML/" class="post-title-link" itemprop="url">UML</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-09-09 17:18:23" itemprop="dateCreated datePublished" datetime="2021-09-09T17:18:23+08:00">2021-09-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-10-01 20:33:45" itemprop="dateModified" datetime="2021-10-01T20:33:45+08:00">2021-10-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%8D%E5%A5%BD%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">不好分类</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>动物依赖氧气，虚线箭头表示, 箭头指向被依赖者</p>
+<p><img src="/images/2022/uml/1.png" alt=""></p>
+<p>关联：拥有关系，如成员变量，实线箭头指向被拥有者</p>
+<p>聚合：整体和部分的关系,  部分<strong>可以离开整体</strong>单独存在， <strong>空心菱形实线箭头</strong>表示, 菱形指向整体</p>
+<p>组合  整体和部分的关系,但部分<strong>不能离开整体</strong>而单独存在 <strong>实心</strong>菱形实线箭头表示, 菱形指向整体 </p>
+<p>泛化  实线空心三角表示, 箭头指向<strong>父类</strong><br>实现  虚线空心三角表示, 箭头指向接口 </p>
+<p><img src="/images/2022/uml/2.png" alt=""></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/08/20/%E6%8A%80%E6%9C%AF/C_C++/%E5%85%B3%E4%BA%8E%E7%BC%96%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/20/%E6%8A%80%E6%9C%AF/C_C++/%E5%85%B3%E4%BA%8E%E7%BC%96%E7%A0%81/" class="post-title-link" itemprop="url">关于编码</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-08-20 11:18:50 / Modified: 14:54:26" itemprop="dateCreated datePublished" datetime="2021-08-20T11:18:50+08:00">2021-08-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%8D%E5%A5%BD%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">不好分类</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>C++中的 L”……” 是宽字符</p>
+<p>汉-》unicode为 \u6c49   <a href="http://www.chi2ko.com/tool/CJK.htm" target="_blank" rel="noopener">http://www.chi2ko.com/tool/CJK.htm</a></p>
+<p>汉-》utf8:  %u6C49</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert 6C49 to binary:   01101100 01001001 &#x2F;&#x2F;c&#x3D;12</span><br></pre></td></tr></table></figure>
+
+<p>汉-》16进制：e6b189</p>
+<p>汉-》urlencode:  %E6%B1%89</p>
+<p>Windows handles so-called “Unicode” strings as UTF-16 strings, while most UNIXes default to UTF-8</p>
+<p><a href="https://stackoverflow.com/questions/643694/what-is-the-difference-between-utf-8-and-unicode" target="_blank" rel="noopener">https://stackoverflow.com/questions/643694/what-is-the-difference-between-utf-8-and-unicode</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">embed 6C49 as UTF-8:      11100110 10110001 10001001</span><br><span class="line">即E6 B1 89</span><br></pre></td></tr></table></figure>
+
+<p>用4个字节或者2个字节来表示一个字符，即UTF32(UCS-4)、UTF-16(UCS-2)。</p>
+<p>准确地说是UTF-32、UTF16转换为UTF-8。</p>
+<p>把“习”字转换成UTF-8编码。</p>
+<ul>
+<li><p>如果，Unicode码大于127，以大端表示。</p>
+</li>
+<li><ul>
+<li>“习”的UTF-16编码为“\u4E60”，以大端表示为‭<strong>‭0100 1110 0110 0000‬。</strong></li>
+</ul>
+</li>
+<li><p>从低位开始，每次取6位，加上高位的10，组成一个字节，直到不足6位。</p>
+</li>
+<li><ul>
+<li>取6位<strong>10 0000</strong>，再加上高位的10，组成一个字节<strong>1010 0000</strong>。</li>
+<li>再取6位<strong>1110 01</strong>，再加上高位的10，组成一个字节<strong>1011 1001</strong>。</li>
+</ul>
+</li>
+<li><p><strong>0100</strong>，不足6位，前面一共组成了2个字节，n=2。把前n+1都标记为1，其余位标记为0，即<strong>1110 0000</strong>。然后加上不足的6位，组成UTF-8编码的头部字节，即<strong>1110 0000 + 0100 = 1110 0100</strong>。</p>
+</li>
+<li><p>最后把这些字节从低位到高位，拼成一串编码，<strong>1110 0100 1011 1001 1010 0000</strong>。即E4B9A0，通常表示为“\xE4\xB9\xA0”。</p>
+</li>
+</ul>
+<p>设备在显示字符的时候，会把不能显示的字符显示为符号�，即“\ufffd”。</p>
+<blockquote>
+<p>是的，终端显示字符的时候，还有一个显示字符集，这里就不展开了。</p>
+</blockquote>
+<p>“\ufffd”用UTF-8编码是多少呢，EFBFBD，用三个字节表示。UTF-8编码是可变长度的，但是我们的GBK编码是定长，2个字节。当两个UTF-8编码的�，即EFBFBD EFBFBD，被当作GBK解码的时候。就会解码成3个字符，EFBF BDEF BFBD，在GBK编码中这三个字符就是大名鼎鼎的“锟斤拷”。</p>
+<p>一个字节一共可以用来表示256种不同的状态，每一个状态对应一个符号，就是256个符号，从00000000到11111111。</p>
+<p>ASCII码一共规定了128个字符的编码，比如空格”SPACE”是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），只占用了一个字节的后面7位，最前面的1位统一规定为0。</p>
+<p>至于亚洲国家的文字，使用的符号就更多了，汉字就多达10万左右。一个字节只能表示256种符号，肯定是不够的，就必须使用多个字节表达一个符号。比如，简体中文常见的编码方式是GB2312，使用两个字节表示一个汉字，所以理论上最多可以表示256x256=65536个符号。</p>
+<p>如果有一种编码，将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。这就是Unicode，就像它的名字都表示的，这是一种所有符号的编码。</p>
+<p>Unicode只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储。</p>
+<p>汉字”严”的unicode是十六进制数4E25，转换成二进制数足足有15位（100111000100101），也就是说这个符号的表示至少需要2个字节。表示其他更大的符号，可能需要3个字节或者4个字节，甚至更多。</p>
+<p><strong>UTF-8是Unicode的实现方式之一。</strong></p>
+<p>UTF-8最大的一个特点，就是它是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/136236750" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/136236750</a></p>
+<p>UTF-8的编码规则很简单，只有二条：<br>1）对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。<br>2）对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。<br>下表总结了编码规则，字母x表示可用编码的位。<br>Unicode符号范围 | UTF-8编码方式<br>(十六进制) | （二进制）<br>0000 0000-0000 007F | 0xxxxxxx<br>0000 0080-0000 07FF | 110xxxxx 10xxxxxx<br>0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx<br>0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx<br>下面，还是以汉字”严”为例，演示如何实现UTF-8编码。<br>已知”严”的unicode是4E25（100111000100101），根据上表，可以发现4E25处在第三行的范围内（0000 0800-0000 FFFF），因此”严”的UTF-8编码需要三个字节，即格式是”1110xxxx 10xxxxxx 10xxxxxx”。然后，从”严”的最后一个二进制位开始，依次从后向前填入格式中的x，多出的位补0。这样就得到了，”严”的UTF-8编码是”11100100 10111000 10100101”，转换成十六进制就是E4B8A5。</p>
+<p>“严”的Unicode码是4E25，UTF-8编码是E4B8A5</p>
+<p>以汉字”严”为例，Unicode码是4E25，需要用两个字节存储，一个字节是4E，另一个字节是25。存储的时候，4E在前，25在后，就是Big endian方式；25在前，4E在后，就是Little endian方式。</p>
+<p>这两个古怪的名称来自英国作家斯威夫特的《格列佛游记》。在该书中，小人国里爆发了内战，战争起因是人们争论，吃鸡蛋时究竟是从大头(Big-Endian)敲开还是从小头(Little-Endian)敲开。为了这件事情，前后爆发了六次战争，一个皇帝送了命，另一个皇帝丢了王位。</p>
+<p>Unicode规范中定义，每一个文件的最前面分别加入一个表示编码顺序的字符，这个字符的名字叫做”零宽度非换行空格”（ZERO WIDTH NO-BREAK SPACE），用FEFF表示。这正好是两个字节，而且FF比FE大1。<br>如果一个文本文件的头两个字节是<strong>FE FF</strong>，就表示该文件采用大头方式；如果头两个字节是FF FE，就表示该文件采用小头方式。</p>
+<p>打开”记事本”程序Notepad.exe，新建一个文本文件，内容就是一个”严”字，依次采用ANSI，Unicode，Unicode big endian 和 UTF-8编码方式保存。<br>然后，用文本编辑软件<a href="https://link.zhihu.com/?target=http%3A//www.google.cn/search%3Faq%3Dt%26oq%3DUltraEdit%26complete%3D1%26hl%3Dzh-CN%26newwindow%3D1%26rlz%3D1B3GGGL_zh-CNCN216CN216%26q%3Dultraedit%2B%E4%B8%8B%E8%BD%BD%26btnG%3DGoogle%2B%E6%90%9C%E7%B4%A2%26meta%3D">UltraEdit中</a>的”十六进制功能”，观察该文件的内部编码方式。<br>1）ANSI：文件的编码就是两个字节”D1 CF”，这正是”严”的GB2312编码，这也暗示GB2312是采用大头方式存储的。<br>2）Unicode：编码是四个字节”FF FE 25 4E”，其中”FF FE”表明是小头方式存储，真正的编码是4E25。<br>3）Unicode big endian：编码是四个字节”FE FF 4E 25”，其中”FE FF”表明是大头方式存储。<br>4）UTF-8：编码是六个字节”EF BB BF E4 B8 A5”，前三个字节”EF BB BF”表示这是UTF-8编码，后三个”E4B8A5”就是”严”的具体编码，它的存储顺序与编码顺序是一致的</p>
+<p>打开”记事本”程序Notepad.exe，新建一个文本文件，内容就是一个”严”字，依次采用ANSI，Unicode，Unicode big endian 和 UTF-8编码方式保存。<br>然后，用文本编辑软件<a href="https://link.zhihu.com/?target=http%3A//www.google.cn/search%3Faq%3Dt%26oq%3DUltraEdit%26complete%3D1%26hl%3Dzh-CN%26newwindow%3D1%26rlz%3D1B3GGGL_zh-CNCN216CN216%26q%3Dultraedit%2B%E4%B8%8B%E8%BD%BD%26btnG%3DGoogle%2B%E6%90%9C%E7%B4%A2%26meta%3D">UltraEdit中</a>的”十六进制功能”，观察该文件的内部编码方式。<br>1）ANSI：文件的编码就是两个字节”D1 CF”，这正是”严”的GB2312编码，这也暗示GB2312是采用大头方式存储的。<br>2）Unicode：编码是四个字节”FF FE 25 4E”，其中”FF FE”表明是小头方式存储，真正的编码是4E25。<br>3）Unicode big endian：编码是四个字节”FE FF 4E 25”，其中”FE FF”表明是大头方式存储。<br>4）UTF-8：编码是六个字节”EF BB BF E4 B8 A5”，前三个字节”EF BB BF”表示这是UTF-8编码，后三个”E4B8A5”就是”严”的具体编码，它的存储顺序与编码顺序是一致的</p>
+<ul>
+<li><p>Unicode 是「字符集」</p>
+</li>
+<li><p>UTF-8 是「编码规则」</p>
+<p>字符集：为每一个「字符」分配一个唯一的 ID（学名为码位 / 码点 / Code Point）</p>
+<p>编码规则：将「码位」转换为字节序列的规则（编码/解码 可以理解为 加密/解密 的过程）</p>
+</li>
+</ul>
+<p>c++ string wstring 区别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wchar_t&#96; is supposed to hold a wide character, and then, things get tricky: On Linux, a &#96;wchar_t&#96; is 4-bytes, while on Windows, it&#39;s &#96;2-bytes</span><br></pre></td></tr></table></figure>
+
+<p>wstring表示的是宽字节，搞unicode的时候通常用这个。加个L表示这是个unicode串</p>
+<p>wchar_t本质上是一个unsigned short，2个字节的大小，即16bit</p>
+<p><a href="https://stackoverflow.com/questions/402283/stdwstring-vs-stdstring" target="_blank" rel="noopener">https://stackoverflow.com/questions/402283/stdwstring-vs-stdstring</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="elesos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">elesos</p>
+  <div class="site-description" itemprop="description">视频经验，视频解答，视频教程，视频教学</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/starRTC" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;starRTC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:895377235@qq.com" title="E-Mail &amp;rarr; mailto:895377235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">elesos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
